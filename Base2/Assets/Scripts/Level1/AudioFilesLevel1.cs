@@ -3,6 +3,7 @@ using System.Collections;
 
 public class AudioFilesLevel1 : MonoBehaviour {
 
+	public AudioClip emptyAudioClip;
 	public AudioClip wakeupAudioClip;
 	public AudioClip firstWallAudioClip;
 
@@ -14,9 +15,5 @@ public class AudioFilesLevel1 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
-	}
-
-	public AudioClip getWakeupAudioClip() {
-		return this.wakeupAudioClip;
 	}
 }

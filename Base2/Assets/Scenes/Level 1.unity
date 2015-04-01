@@ -5376,7 +5376,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 4f9156fce5c6b2e4889d8953c6c8d338, type: 3}
       propertyPath: m_Name
-      value: Level_1_Obstacle_Wall 2
+      value: Level_1_Obstacle_Wall_03
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 4f9156fce5c6b2e4889d8953c6c8d338, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6446,6 +6446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd824c92812d6db4497b42676ae7f09d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  emptyAudioClip: {fileID: 8300000, guid: 36efe4c867dd3604fbaf41623c4c4e02, type: 3}
   wakeupAudioClip: {fileID: 8300000, guid: 984c95975c1f43041bbf74747e1ed60e, type: 3}
   firstWallAudioClip: {fileID: 8300000, guid: 031139b423e2bbd41b3575fa5da4321e, type: 3}
 --- !u!114 &288855402
@@ -6459,6 +6460,144 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87f57cf5360c8284e89b008da65e1b98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &288855403
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 288855400}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+--- !u!82 &288855404
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 288855400}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1001 &293294495
 Prefab:
   m_ObjectHideFlags: 0
@@ -22847,7 +22986,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 4f9156fce5c6b2e4889d8953c6c8d338, type: 3}
       propertyPath: m_Name
-      value: Level_1_Obstacle_Wall 3
+      value: Level_1_Obstacle_Wall_04
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 4f9156fce5c6b2e4889d8953c6c8d338, type: 3}
       propertyPath: m_LocalScale.x
@@ -31336,6 +31475,10 @@ Prefab:
     - target: {fileID: 2300000, guid: 4f9156fce5c6b2e4889d8953c6c8d338, type: 3}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4f9156fce5c6b2e4889d8953c6c8d338, type: 3}
+      propertyPath: m_Name
+      value: Level_1_Obstacle_Wall_01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4f9156fce5c6b2e4889d8953c6c8d338, type: 3}
@@ -43899,7 +44042,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 4f9156fce5c6b2e4889d8953c6c8d338, type: 3}
       propertyPath: m_Name
-      value: Level_1_Obstacle_Wall 1
+      value: Level_1_Obstacle_Wall_02
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 4f9156fce5c6b2e4889d8953c6c8d338, type: 3}
       propertyPath: m_Materials.Array.data[0]
