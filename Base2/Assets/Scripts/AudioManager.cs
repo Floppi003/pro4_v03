@@ -37,7 +37,7 @@ public class AudioManager : MonoBehaviour {
 			//If I am the first instance, make me the Singleton
 			_instance = this;
 			audioQueue = new Queue<AudioClip>();
-			AudioSource[] audioSources = GameObject.Find ("Player").GetComponents<AudioSource>();
+			AudioSource[] audioSources = GameObject.Find ("GM").GetComponents<AudioSource>();
 			audioSource = audioSources[0];
 			backgroundAudioSource = audioSources[1];
 

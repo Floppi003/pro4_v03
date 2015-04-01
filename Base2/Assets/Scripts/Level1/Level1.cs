@@ -31,9 +31,7 @@ public class Level1 : MonoBehaviour {
 	}
 
 	void Start() {
-		audioFiles = GameObject.Find ("AudioFilesLevel1").GetComponent<AudioFilesLevel1> ();
-		AudioClip ac = new AudioClip ();
-		AudioManager.instance.queueAudioClip (ac);
+		audioFiles = GameObject.Find ("GM").GetComponent<AudioFilesLevel1> ();
 		Debug.Log ("Start");
 	}
 
