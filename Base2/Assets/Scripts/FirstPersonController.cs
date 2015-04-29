@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 [RequireComponent (typeof (GravityBody))]
@@ -7,6 +8,7 @@ public class FirstPersonController : MonoBehaviour {
 	private Vector3 spawn;
 
 	// public vars
+	public Text sensitivityText;
 	public float mouseSensitivityX = 250;
 	public float mouseSensitivityY = 250;
 	public float walkSpeed = 6; //movement/walking speed
@@ -148,5 +150,13 @@ public class FirstPersonController : MonoBehaviour {
 	public void Die()
 	{		
 		transform.position = spawn;
+	}
+
+	public void ChangeMouseSensitivity(float sensitivity){
+		mouseSensitivityX = sensitivity;
+		mouseSensitivityY = sensitivity;
+		string sensitivityString = sensitivity.ToString ();
+		sensitivityText.text = sensitivityString;
+
 	}
 }
