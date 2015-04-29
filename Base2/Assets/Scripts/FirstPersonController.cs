@@ -59,6 +59,7 @@ public class FirstPersonController : MonoBehaviour {
 
 	
 	void Awake() {
+		//Cursor.visible = false;
 		Screen.lockCursor = true;
 		cameraTransform = Camera.main.transform;
 	}
@@ -133,24 +134,13 @@ public class FirstPersonController : MonoBehaviour {
 		GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + localMove);
 	}
 
-
-
-
-
-
 	public void respawn() {
 		Debug.Log ("respawn executed");
 		this.transform.position = new Vector3(25.1f, 1.32f, -0.61f);
 		this.isInFellofZone = false;
 	}
 
-
-
-
-
-
 	// play Audio Files 
-
 	public void playGreenSound() {
 		if (timeSinceLastButtonAudioPlay < 3.0f) {
 			return;
@@ -305,7 +295,6 @@ public class FirstPersonController : MonoBehaviour {
 		}
 		if (other.transform.tag == "Goal")
 		{
-			Time.timeScale = 0f;
 			manager.CompleteLevel();
 		}
 	}

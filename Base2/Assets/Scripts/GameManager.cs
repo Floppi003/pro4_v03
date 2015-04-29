@@ -4,7 +4,7 @@ using System.Collections;
 public class GameManager : MonoBehaviour {
 
 	// Count
-	int maxLevels = 7; //max id = maxLevels - 1
+	int maxLevels = 6; //max id = maxLevels - 1
 	public int currentLevel = 1; //start with 1 = id 0
 	public int unlockedLevel = 1; //start with 1 = id 0
 
@@ -21,18 +21,26 @@ public class GameManager : MonoBehaviour {
 	//public GameObject tokenParent;
 
 	private bool completed = false;
-	private bool showWinScreen = false;
+	private bool showPauseMenu = false;
 	public int winScreenWidth, winScreenHeight;
 
 	void Update()
 	{
 		if (Input.GetButtonDown ("PauseMenu") && !completed) {
-			showWinScreen = !showWinScreen;
-			if(showWinScreen){
-				Time.timeScale = 0f;
-			}else{
-				Time.timeScale = 1f;
-			}
+			PauseMenu();
+		}
+	}
+
+	void PauseMenu(){
+		showPauseMenu = !showPauseMenu;
+		if(showPauseMenu){
+			//Cursor.visible = true;
+			Screen.lockCursor = false;
+			Time.timeScale = 0f;
+		}else{
+			//Cursor.visible = false;
+			Screen.lockCursor = true;
+			Time.timeScale = 1f;
 		}
 	}
 
@@ -97,26 +105,43 @@ public class GameManager : MonoBehaviour {
 	{
 		GUI.skin = skin;
 		//GUI.Label (timerRect, currentTime, skin.GetStyle ("Timer"));
-		//GUI.Label (new Rect(45,100,200,200), "Wazzup!");
-
-		if (showWinScreen)
+		GUI.Label (new Rect(10,10,200,200), "[Esc] Menu");
+		/*
+		if (GUI.Button(new Rect(100, 100, 150, 40), "Menu"))
 		{
-			Rect winScreenRect = new Rect(Screen.width/2 - (Screen.width *.5f/2), Screen.height/2 - (Screen.height *.5f/2), Screen.width *.5f, Screen.height *.5f);
-			GUI.Box(winScreenRect, "Yeah");
-			if (GUI.Button(new Rect(winScreenRect.x + winScreenRect.width - 170, winScreenRect.y + winScreenRect.height - 60, 150, 40), "Continue"))
+			PauseMenu();
+		}
+		*/
+		if (showPauseMenu)
+		{
+			Rect winScreenRect = new Rect(Screen.width/2/2, Screen.height/3/2, Screen.width/2, Screen.height/3*2);
+			GUI.Box(winScreenRect, "Menu");
+			if (GUI.Button(new Rect(winScreenRect.x + winScreenRect.width / 2 - 75, winScreenRect.y + winScreenRect.height / 5*1, 150, 40), "Continue"))
 			{
-				LoadNextLevel();
+				PauseMenu();
+				//LoadNextLevel();
 			}
-			if (GUI.Button(new Rect(winScreenRect.x + 20, winScreenRect.y + winScreenRect.height - 60, 100, 40), "Quit"))
+			if (GUI.Button(new Rect(winScreenRect.x + winScreenRect.width / 2 - 75, winScreenRect.y + winScreenRect.height / 5*2, 150, 40), "Center"))
 			{
 				currentLevel += 1;
 				SaveGame ();
 				Application.LoadLevel("main_menu");
 				Time.timeScale = 1f;
 			}
+			if (GUI.Button(new Rect(winScreenRect.x + winScreenRect.width / 2 - 75, winScreenRect.y + winScreenRect.height / 5*3, 150, 40), "Options"))
+			{
+				currentLevel += 1;
+				SaveGame ();
+				Application.LoadLevel("main_menu");
+				Time.timeScale = 1f;
+			}
+			if (GUI.Button(new Rect(winScreenRect.x + winScreenRect.width / 2 - 75, winScreenRect.y + winScreenRect.height / 5*4, 150, 40), "Exit"))
+			{
+				Application.Quit ();
+			}
 
-			GUI.Label(new Rect(winScreenRect.x + 20, winScreenRect.y + 40, 300, 50), " Score");
-			GUI.Label(new Rect(winScreenRect.x + 20, winScreenRect.y + 70, 300, 50), "Completed Level " + currentLevel);
+			//GUI.Label(new Rect(winScreenRect.x + 20, winScreenRect.y + 40, 300, 50), " Score");
+			//GUI.Label(new Rect(winScreenRect.x + 20, winScreenRect.y + 70, 300, 50), "Completed Level " + currentLevel);
 		}
 	}
 }
