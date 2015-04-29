@@ -257,14 +257,6 @@ MonoBehaviour:
   redClip2: {fileID: 0}
   blueClip1: {fileID: 0}
   blueClip2: {fileID: 0}
-  bridgeBeforeClip1: {fileID: 0}
-  bridgeBeforeClip2: {fileID: 0}
-  fellofGeneralClip1: {fileID: 0}
-  fellofGeneralAdvancedClip1: {fileID: 0}
-  fellofBridgeClip1: {fileID: 0}
-  fellofBridgeClip2: {fileID: 0}
-  isInFellofZone: 0
-  fellOfBridgeCounter: 0
 --- !u!114 &96735171
 MonoBehaviour:
   m_ObjectHideFlags: 0
