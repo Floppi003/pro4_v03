@@ -2,35 +2,35 @@
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
-
+	
 	// Count
 	int maxLevels = 6; //max id = maxLevels - 1
 	public int currentLevel = 1; //start with 1 = id 0
 	public int unlockedLevel = 1; //start with 1 = id 0
-
+	
 	// Timer variables
 	//public Rect timerRect;
 	//public Color warningColorTimer;
 	//public Color defaultColorTimer;
 	private string currentTime;
-
+	
 	// GUI SKI
 	public GUISkin skin;
-
+	
 	// References
 	//public GameObject tokenParent;
-
+	
 	private bool completed = false;
 	private bool showPauseMenu = false;
 	public int winScreenWidth, winScreenHeight;
-
+	
 	void Update()
 	{
 		if (Input.GetButtonDown ("PauseMenu") && !completed) {
 			PauseMenu();
 		}
 	}
-
+	
 	void PauseMenu(){
 		showPauseMenu = !showPauseMenu;
 		if(showPauseMenu){
@@ -43,18 +43,18 @@ public class GameManager : MonoBehaviour {
 			Time.timeScale = 1f;
 		}
 	}
-
+	
 	void Start()
 	{
-//		totalTokenCount = tokenParent.transform.childCount;
-
+		//		totalTokenCount = tokenParent.transform.childCount;
+		
 		if (PlayerPrefs.GetInt("Level Unlocked") > 1) //if there are more levels unlocked than level 1, let him play them
 		{
 			unlockedLevel = PlayerPrefs.GetInt("Level Unlocked");
 		} else {
 			unlockedLevel = 1;
 		}
-
+		
 		if (PlayerPrefs.GetInt("Current Level") > 1) //if there are more levels unlocked than level 1, let him play them
 		{
 			currentLevel = PlayerPrefs.GetInt ("Current Level");
@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour {
 		completed = true;
 		LoadNextLevel ();
 	}
-
+	
 	void LoadNextLevel()
 	{
 		Time.timeScale = 1f;
@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour {
 			print ("You win!");
 		}
 	}
-
+	
 	void SaveGame()
 	{
 		if (unlockedLevel < currentLevel) {
@@ -101,6 +101,13 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
+	public void ToCenter(){
+		currentLevel += 1;
+		SaveGame ();
+		Application.LoadLevel("main_menu");
+		Time.timeScale = 1f;
+	}
+	
 	void OnGUI()
 	{
 		GUI.skin = skin;
@@ -123,23 +130,17 @@ public class GameManager : MonoBehaviour {
 			}
 			if (GUI.Button(new Rect(winScreenRect.x + winScreenRect.width / 2 - 75, winScreenRect.y + winScreenRect.height / 5*2, 150, 40), "Center"))
 			{
-				currentLevel += 1;
-				SaveGame ();
-				Application.LoadLevel("main_menu");
-				Time.timeScale = 1f;
+				ToCenter();
 			}
 			if (GUI.Button(new Rect(winScreenRect.x + winScreenRect.width / 2 - 75, winScreenRect.y + winScreenRect.height / 5*3, 150, 40), "Options"))
 			{
-				currentLevel += 1;
-				SaveGame ();
-				Application.LoadLevel("main_menu");
-				Time.timeScale = 1f;
+				ToCenter();
 			}
 			if (GUI.Button(new Rect(winScreenRect.x + winScreenRect.width / 2 - 75, winScreenRect.y + winScreenRect.height / 5*4, 150, 40), "Exit"))
 			{
 				Application.Quit ();
 			}
-
+			
 			//GUI.Label(new Rect(winScreenRect.x + 20, winScreenRect.y + 40, 300, 50), " Score");
 			//GUI.Label(new Rect(winScreenRect.x + 20, winScreenRect.y + 70, 300, 50), "Completed Level " + currentLevel);
 		}
