@@ -20,7 +20,7 @@ public class AudioManager : MonoBehaviour {
 				//Tell unity not to destroy this object when loading a new scene!
 				//DontDestroyOnLoad(_instance.gameObject);
 			}
-			
+
 			return _instance;
 		}
 	}
