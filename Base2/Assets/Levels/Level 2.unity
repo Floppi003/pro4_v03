@@ -7115,7 +7115,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 443308, guid: 30dc28a51958ff84c8a896ac0d8932be, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 443308, guid: 30dc28a51958ff84c8a896ac0d8932be, type: 2}
       propertyPath: m_LocalPosition.y
@@ -7200,6 +7200,14 @@ Prefab:
     - target: {fileID: 11433600, guid: 30dc28a51958ff84c8a896ac0d8932be, type: 2}
       propertyPath: mouseSensitivityY
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 443308, guid: 30dc28a51958ff84c8a896ac0d8932be, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -.707106829
+      objectReference: {fileID: 0}
+    - target: {fileID: 443308, guid: 30dc28a51958ff84c8a896ac0d8932be, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: .707106709
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 30dc28a51958ff84c8a896ac0d8932be, type: 2}
