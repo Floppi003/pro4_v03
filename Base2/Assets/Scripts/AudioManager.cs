@@ -4,6 +4,12 @@ using System.Timers;
 
 public class AudioManager : MonoBehaviour {
 
+	//slider input
+	/*
+	public float soundVolume = 0.5;
+	public float musicVolume = 0.5;
+	*/
+
 	private static AudioManager _instance;
 
 	private static Queue<AudioClip> audioQueue;
@@ -95,5 +101,19 @@ public class AudioManager : MonoBehaviour {
 
 		// play the audio clip
 		audioSource.PlayOneShot (audioQueue.Dequeue ());
+	}
+
+	public void ChangeSoundVolume(float soundVolume){ //between 0 and 1
+		//change volume of sound effects (speech)
+
+		// Best tutorial:
+		// http://answers.unity3d.com/questions/306684/how-to-change-volume-on-many-audio-objects-with-sp.html
+	}
+
+	public void ChangeMusicVolume(float musicVolume){ // between 0 and 1
+		//change volume of background music
+
+		// Best tutorial:
+		// http://answers.unity3d.com/questions/306684/how-to-change-volume-on-many-audio-objects-with-sp.html
 	}
 }

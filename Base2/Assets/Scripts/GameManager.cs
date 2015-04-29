@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
-	
+	public Canvas pauseMenu;
+
 	// Count
 	int maxLevels = 6; //max id = maxLevels - 1
 	public int currentLevel = 1; //start with 1 = id 0
@@ -34,11 +35,13 @@ public class GameManager : MonoBehaviour {
 	void PauseMenu(){
 		showPauseMenu = !showPauseMenu;
 		if(showPauseMenu){
-			//Cursor.visible = true;
+			pauseMenu.enabled = true;
+			Cursor.visible = true;
 			Screen.lockCursor = false;
 			Time.timeScale = 0f;
 		}else{
-			//Cursor.visible = false;
+			pauseMenu.enabled = false;
+			Cursor.visible = false;
 			Screen.lockCursor = true;
 			Time.timeScale = 1f;
 		}
@@ -46,6 +49,7 @@ public class GameManager : MonoBehaviour {
 	
 	void Start()
 	{
+		pauseMenu.enabled = false;
 		//		totalTokenCount = tokenParent.transform.childCount;
 		
 		if (PlayerPrefs.GetInt("Level Unlocked") > 1) //if there are more levels unlocked than level 1, let him play them
@@ -116,15 +120,11 @@ public class GameManager : MonoBehaviour {
 	
 	void OnGUI()
 	{
+		/*
 		GUI.skin = skin;
 		//GUI.Label (timerRect, currentTime, skin.GetStyle ("Timer"));
 		GUI.Label (new Rect(10,10,200,200), "[Esc] Menu");
-		/*
-		if (GUI.Button(new Rect(100, 100, 150, 40), "Menu"))
-		{
-			PauseMenu();
-		}
-		*/
+
 		if (showPauseMenu)
 		{
 			Rect winScreenRect = new Rect(Screen.width/2/2, Screen.height/3/2, Screen.width/2, Screen.height/3*2);
@@ -150,6 +150,7 @@ public class GameManager : MonoBehaviour {
 			//GUI.Label(new Rect(winScreenRect.x + 20, winScreenRect.y + 40, 300, 50), " Score");
 			//GUI.Label(new Rect(winScreenRect.x + 20, winScreenRect.y + 70, 300, 50), "Completed Level " + currentLevel);
 		}
+		*/
 	}
 }
 

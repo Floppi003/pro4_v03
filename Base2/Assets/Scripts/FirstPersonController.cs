@@ -8,7 +8,6 @@ public class FirstPersonController : MonoBehaviour {
 	private Vector3 spawn;
 	
 	// public vars
-	public Text sensitivityText;
 	public float mouseSensitivityX = 250;
 	public float mouseSensitivityY = 250;
 	public float walkSpeed = 6; //movement/walking speed
@@ -49,8 +48,8 @@ public class FirstPersonController : MonoBehaviour {
 	Transform cameraTransform;
 	
 	
-	void Awake() {
-		//Cursor.visible = false;
+	void Start() { //Awake
+		Cursor.visible = false;
 		Screen.lockCursor = true;
 		cameraTransform = Camera.main.transform;
 		spawn = transform.position;
@@ -156,7 +155,5 @@ public class FirstPersonController : MonoBehaviour {
 		mouseSensitivityX = sensitivity;
 		mouseSensitivityY = sensitivity;
 		string sensitivityString = sensitivity.ToString ();
-		sensitivityText.text = sensitivityString;
-		
 	}
 }

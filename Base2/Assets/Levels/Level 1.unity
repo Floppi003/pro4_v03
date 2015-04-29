@@ -303,7 +303,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 1767503479}
-  sensitivityText: {fileID: 0}
   mouseSensitivityX: 250
   mouseSensitivityY: 250
   walkSpeed: 8
@@ -555,7 +554,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 1054681086}
   m_HandleRect: {fileID: 2116355112}
   m_Direction: 0
-  m_MinValue: 1
+  m_MinValue: 20
   m_MaxValue: 500
   m_WholeNumbers: 1
   m_Value: 250
@@ -1160,8 +1159,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 96735170}
-        m_MethodName: ChangeMouseSensitivity
+      - m_Target: {fileID: 1776330680}
+        m_MethodName: ChangeSoundVolume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1958,6 +1957,10 @@ Prefab:
       propertyPath: maxLevels
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 11496052, guid: 66012f607c6d12c4981447aeeb30ff6c, type: 2}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1722995603}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66012f607c6d12c4981447aeeb30ff6c, type: 2}
   m_IsPrefabParent: 0
@@ -2722,7 +2725,7 @@ Canvas:
   serializedVersion: 2
   m_RenderMode: 0
   m_Camera: {fileID: 2050660908}
-  m_PlaneDistance: .310000002
+  m_PlaneDistance: .400000006
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -2735,6 +2738,21 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1417082305}
   m_Script: {fileID: 11500000, guid: 59839f6e29086dd4bbb7d288783eb4fc, type: 3}
+--- !u!1 &1776330679
+GameObject:
+  m_PrefabParentObject: {fileID: 138994, guid: 66012f607c6d12c4981447aeeb30ff6c, type: 2}
+  m_PrefabInternal: {fileID: 1417082305}
+--- !u!114 &1776330680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1776330679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8482d9e291e573249bca0a97ac7ffe5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1803095479
 GameObject:
   m_ObjectHideFlags: 0
@@ -3133,8 +3151,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 96735170}
-        m_MethodName: ChangeMouseSensitivity
+      - m_Target: {fileID: 1776330680}
+        m_MethodName: ChangeMusicVolume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3285,8 +3303,8 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2099053281}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: .0871557519, z: 0, w: .99619472}
+  m_LocalPosition: {x: 0, y: 0, z: 9.66406242e-06}
   m_LocalScale: {x: 1.29999995, y: 1, z: 1}
   m_Children:
   - {fileID: 501376150}
@@ -3298,9 +3316,9 @@ RectTransform:
   - {fileID: 243492261}
   m_Father: {fileID: 1034293056}
   m_RootOrder: 0
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -108.699997, y: -178}
+  m_AnchorMin: {x: 1, y: .5}
+  m_AnchorMax: {x: 1, y: .5}
+  m_AnchoredPosition: {x: -108.699997, y: 0}
   m_SizeDelta: {x: 141, y: 320}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &2116355111
