@@ -18,7 +18,7 @@ public class FixationDataComponent : MonoBehaviour
     private IEyeXDataProvider<EyeXFixationPoint> _dataProvider;
 	private RaycastHit fixationRaycastHit;
 
-    /// <summary>
+    /// <summary>6
     /// Gets the last fixation.
     /// </summary>
     public EyeXFixationPoint LastFixation { get; private set; }
@@ -57,24 +57,21 @@ public class FixationDataComponent : MonoBehaviour
 
 					//fixationRaycastHit.collider.gameObject.transform.position = new Vector3(0, 0, 0); 
 
-					Debug.Log ("fixedObject: " + fixedObject);
+					//Debug.Log ("fixedObject: " + fixedObject);
+					AudioFilesLevelFloppi afFloppi = GameObject.Find ("AudioFilesLevelFloppi").GetComponent<AudioFilesLevelFloppi>();
 
 					if(fixedObject.Contains("Button_red"))
 					{
-						GameObject player = GameObject.FindWithTag ("Player");
-						player.GetComponent<FirstPersonController>().playRedSound ();
-						//player.GetComponent<FirstPersonController>().playGreenSound();
+						AudioManager.instance.playAudioClipIfFree(afFloppi.getRedButtonClip());
 					}
 					else if (fixedObject.Contains ("Button_green")) 
 					{
-						GameObject player = GameObject.Find ("Player");
-						player.GetComponent<FirstPersonController>().playGreenSound ();
+						AudioManager.instance.playAudioClipIfFree (afFloppi.getGreenButtonClip());
 
 					}
 					else if (fixedObject.Contains ("Button_blue")) 
 					{
-						GameObject player = GameObject.Find ("Player");
-						player.GetComponent<FirstPersonController>().playBlueSound ();
+						AudioManager.instance.playAudioClipIfFree(afFloppi.getBlueButtonClip());
 					}
 				}
 			}

@@ -11,31 +11,26 @@ public class BridgeCollider : MonoBehaviour {
 
 		if (objectName.Equals ("BridgeFloorless")) {
 			if (other.gameObject.name.Equals ("Player")) {
-				Debug.Log ("bridge floor less collider");
-				FirstPersonController fps = GameObject.Find ("Player").GetComponent<FirstPersonController>();
-				if(!fps.isInFellofZone) {
+
+				AudioFilesLevelFloppi afFloppi = GameObject.Find ("AudioFilesLevelFloppi").GetComponent<AudioFilesLevelFloppi>();
+				if(afFloppi.fellofZone == AudioFilesLevelFloppi.FellofZone.None ) {
+					// play felldown clip
+					AudioManager.instance.queueAudioClip(afFloppi.getBridgeFelldownClip());
 					Debug.Log ("will call audio collider");
-					/*AudioManager.instance.queueAudioClip(fps.fellofBridgeSound());
-				AudioManager.instance.queueAudioClip (fps.fellofBridgeSound());
-				AudioManager.instance.queueAudioClip (fps.fellofBridgeSound());
-				*/
-					Debug.LogWarning ("bridgeflorless playing sound");
-					fps.playFellofBridgeSound ();
-					
 				}
-				fps.isInFellofZone = true;
-				fps.fellOfBridgeCounter++;
+
+				afFloppi.fellofZone = AudioFilesLevelFloppi.FellofZone.FellofZoneBridge;
 			}
 			
 		} else if (objectName.Equals ("RedEyeLeftEyeFloorlessCollider")) {
 			if (other.gameObject.name.Equals ("Player")) {
-				FirstPersonController fps = GameObject.Find ("Player").GetComponent<FirstPersonController>();
-				if(!fps.isInFellofZone) {
-					fps.playFellofGeneralSound ();
+
+				AudioFilesLevelFloppi afFloppi = GameObject.Find ("AudioFilesLevelFloppi").GetComponent<AudioFilesLevelFloppi>();
+				if(afFloppi.fellofZone == AudioFilesLevelFloppi.FellofZone.None) {
+					AudioManager.instance.queueAudioClip (afFloppi.getLeftEyeRightEyeFelldownClip());
 				}
-				Debug.LogWarning ("red eye left eye sound played");
-				fps.isInFellofZone = true;
-				fps.fellOfBridgeCounter++;
+
+				afFloppi.fellofZone = AudioFilesLevelFloppi.FellofZone.FellofZoneLeftEyeRightEye;
 			}
 		}
 	}

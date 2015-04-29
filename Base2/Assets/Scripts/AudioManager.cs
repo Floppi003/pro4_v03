@@ -8,7 +8,9 @@ public class AudioManager : MonoBehaviour {
 
 	private static Queue<AudioClip> audioQueue;
 	private static AudioSource audioSource;
-
+	private static float timeSinceLastPlay; // in seconds
+	private float timeOfLastPlayedClip; // in seconds
+ 
 	// Singleton Methods
 	public static AudioManager instance {
 		get {
@@ -39,11 +41,13 @@ public class AudioManager : MonoBehaviour {
 		}
 	}
 
+	protected void Update() {
+		timeSinceLastPlay += Time.deltaTime;
+	}
+
 
 	public void queueAudioClip(AudioClip audioClip) {
-		Debug.Log ("queue Audio Clip called");
-		// Queue the audioSource
-
+		Debug.Log ("queue audio clip called");
 		// calculate time for next audio playback
 		AudioClip[] audioClips = audioQueue.ToArray();
 		float totalWaitingTime = 0.0f; // seconds
@@ -51,27 +55,45 @@ public class AudioManager : MonoBehaviour {
 			totalWaitingTime += ac.length;
 		}
 			
+		totalWaitingTime += Mathf.Max (0, timeOfLastPlayedClip - timeSinceLastPlay);
 		int totalWaitingTimeInt = (int) totalWaitingTime * 1000;
 
 		audioQueue.Enqueue(audioClip);
 		Invoke ("playNextClipInQueue", totalWaitingTime);
-		Debug.Log ("totalWaitingTime: " + totalWaitingTime);
 	}
 
-	public void playAudioClipIfFree(AudioClip audioClip) {
-		
+	public bool playAudioClipIfFree(AudioClip audioClip) {
+		if (!audioSource.isPlaying) {
+			timeOfLastPlayedClip = audioClip.length;
+			timeSinceLastPlay = 0.0f;
+
+			audioSource.PlayOneShot (audioClip);
+			return true;
+		}
+
+		return false;
 	}
 
-	public void playAudioClipOnceOnly(AudioClip audioCip) {
+	public void playAudioClipForced(AudioClip audioClip) {
+		//  stop all other playback and delete the queue
+		audioQueue.Clear ();
+		audioSource.Stop ();
 
+		timeOfLastPlayedClip = audioClip.length;
+		timeSinceLastPlay = 0.0f;
+
+		audioSource.PlayOneShot (audioClip);
 	}
 
 
 	private void playNextClipInQueue() {
-
-
 		Debug.Log ("Playing next shot out of queue: ");
 
-		GameObject.Find ("Player").GetComponent<AudioSource>().PlayOneShot (audioQueue.Dequeue ());
+		// save the time and lenght of the clip that is going to be played
+		timeOfLastPlayedClip = audioQueue.Peek ().length;
+		timeSinceLastPlay = 0.0f;
+
+		// play the audio clip
+		audioSource.PlayOneShot (audioQueue.Dequeue ());
 	}
 }

@@ -134,14 +134,14 @@ public class EyePositionDataComponent : MonoBehaviour
 				}
 
 
-				Debug.Log ("leftEyePosition: " + leftEyePosition);
+				/*Debug.Log ("leftEyePosition: " + leftEyePosition);
 				Debug.Log ("rightEyePosition: " + rightEyePosition);
 				Debug.Log ("leftEyeIsValid: " + lastEyePosition.LeftEye.IsValid);
 				Debug.Log ("rightEyeIsValid: " + lastEyePosition.RightEye.IsValid);
 				Debug.Log ("noneCount: " + noneCount);
 				Debug.Log ("leftCount: " + leftCount);
 				Debug.Log ("rightCount: " + rightCount);
-				Debug.Log ("bothCont: " + bothCount);
+				Debug.Log ("bothCont: " + bothCount);*/
 
 
 				// check which left-eye / right-eye objects should be visible
@@ -176,16 +176,18 @@ public class EyePositionDataComponent : MonoBehaviour
 
 					// both eyes were closed for a while, if you are in felldown mode respawn
 					FirstPersonController fps = GameObject.Find ("Player").GetComponent<FirstPersonController>();
+					AudioFilesLevelFloppi afFloppi = GameObject.Find ("AudioFilesLevelFloppi").GetComponent<AudioFilesLevelFloppi>();
 
 					AudioSource audioSource = fps.gameObject.GetComponent<AudioSource>();
 
-					if (fps.isInFellofZone) {
+					if (afFloppi.fellofZone != AudioFilesLevelFloppi.FellofZone.None) {
 						// respawn player
-						fps.respawn ();
-						Debug.Log ("fps.fellofBridgeCounter: " + fps.fellOfBridgeCounter);
+						fps.Die ();
+						afFloppi.fellofZone = AudioFilesLevelFloppi.FellofZone.None;
+
 						// after second try play sound after respawning
-						if (fps.fellOfBridgeCounter >= 2) {
-							fps.playBridgeBeforeSound ();
+						if (afFloppi.bridgeFelldownCounter >= 2) {
+							AudioManager.instance.queueAudioClip(afFloppi.getBridgeBeforeClip());
 						}
 					}
 				}

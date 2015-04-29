@@ -35,17 +35,6 @@ public class FirstPersonController : MonoBehaviour {
 	public AudioClip blueClip1;
 	public AudioClip blueClip2;
 
-	// audio files bridge and falldown
-	public AudioClip bridgeBeforeClip1;
-	public AudioClip bridgeBeforeClip2;
-	public AudioClip fellofGeneralClip1;
-	public AudioClip fellofGeneralAdvancedClip1;
-	public AudioClip fellofBridgeClip1;
-	public AudioClip fellofBridgeClip2;
-	private int fellofClipsPlayed = 0;
-
-	public bool isInFellofZone = false;
-	public int fellOfBridgeCounter = 0;
 
 	private float timeSinceLastButtonAudioPlay = 0.0f;
 
@@ -61,6 +50,7 @@ public class FirstPersonController : MonoBehaviour {
 	void Awake() {
 		Screen.lockCursor = true;
 		cameraTransform = Camera.main.transform;
+		spawn = transform.position;
 	}
 	
 	void Update() {
@@ -134,161 +124,6 @@ public class FirstPersonController : MonoBehaviour {
 	}
 
 
-
-
-
-
-	public void respawn() {
-		Debug.Log ("respawn executed");
-		this.transform.position = new Vector3(25.1f, 1.32f, -0.61f);
-		this.isInFellofZone = false;
-	}
-
-
-
-
-
-
-	// play Audio Files 
-
-	public void playGreenSound() {
-		if (timeSinceLastButtonAudioPlay < 3.0f) {
-			return;
-		}
-
-		timeSinceLastButtonAudioPlay = 0.0f;
-
-
-		Debug.Log ("play Green sound called");
-		float random = Random.Range (0.0f, 3.0f);
-
-		if (random < 1.0f) {
-			GetComponent<AudioSource> ().PlayOneShot (this.greenClip1);
-		} else if (random < 2.0f) {
-			GetComponent<AudioSource> ().PlayOneShot (this.greenClip2);
-		} else {
-			GetComponent<AudioSource> ().PlayOneShot (this.greenClip3);
-		}
-	}
-
-
-	public void playRedSound() {
-		if (timeSinceLastButtonAudioPlay < 3.0f) {
-			return;
-		}
-		
-		timeSinceLastButtonAudioPlay = 0.0f;
-
-
-		Debug.Log ("play Red sound called");
-		float random = Random.Range (0.0f, 2.0f);
-
-		if (random < 1.0f) {
-			GetComponent<AudioSource> ().PlayOneShot (this.redClip1);
-		} else {
-			GetComponent<AudioSource> ().PlayOneShot (this.redClip2);
-		}
-	}
-
-	public void playBlueSound() {
-		if (timeSinceLastButtonAudioPlay < 3.0f) {
-			return;
-		}
-		
-		timeSinceLastButtonAudioPlay = 0.0f;
-
-
-		Debug.Log ("play Blue sound called");
-		float random = Random.Range (0.0f, 2.0f);
-
-		if (random < 1.0f) {
-			GetComponent<AudioSource> ().PlayOneShot (this.blueClip1);
-		} else {
-			GetComponent<AudioSource> ().PlayOneShot (this.blueClip2);
-		}
-	}
-
-	public void playBridgeBeforeSound() {
-		// plays bridge before sound
-		float random = Random.Range (0.0f, 2.0f);
-
-		if (random < 1.0f) {
-			GetComponent<AudioSource>().PlayOneShot (this.bridgeBeforeClip1);
-		} else {
-			GetComponent<AudioSource>().PlayOneShot (this.bridgeBeforeClip2);
-		}
-	}
-
-	public void playFellofGeneralSound() {
-		// only plays general sound
-		float random;
-
-		if (this.fellofClipsPlayed > 2) {
-			random = Random.Range (0.0f, 2.0f);
-		} else {
-			random = Random.Range (0.0f, 0.99f);
-		}
-
-
-		if (random < 1.0f) {
-			GetComponent<AudioSource>().PlayOneShot (this.fellofGeneralClip1);
-		} else {
-			GetComponent<AudioSource>().PlayOneShot (this.fellofGeneralAdvancedClip1);
-		}
-
-		this.fellofClipsPlayed++;
-	}
-
-	public void playFellofBridgeSound() {
-		// plays fellof bridge and fellof general
-		float random;
-		
-		if (this.fellofClipsPlayed > 2) {
-			random = Random.Range (0.0f, 4.0f);
-		} else {
-			random = Random.Range(0.0f, 3.0f);
-		}
-
-
-		if (random < 1.0f) {
-			GetComponent<AudioSource>().PlayOneShot (this.fellofBridgeClip1);
-		} else if (random < 2.0f) {
-			GetComponent<AudioSource>().PlayOneShot (this.fellofGeneralClip1);
-		} else if (random < 3.0f) {
-			GetComponent<AudioSource>().PlayOneShot (this.fellofBridgeClip2);
-		} else {
-			GetComponent<AudioSource>().PlayOneShot (this.fellofGeneralAdvancedClip1);
-		}
-
-		this.fellofClipsPlayed++;
-	}
-
-	public AudioClip fellofBridgeSound() {
-		// plays fellof bridge and fellof general
-		float random;
-		
-		if (this.fellofClipsPlayed > 2) {
-			random = Random.Range (0.0f, 4.0f);
-		} else {
-			random = Random.Range(0.0f, 3.0f);
-		}
-		
-
-		this.fellofClipsPlayed++;
-
-		if (random < 1.0f) {
-			return this.fellofGeneralClip1;
-		} else if (random < 2.0f) {
-			return this.fellofBridgeClip1;
-		} else if (random < 3.0f) {
-			return this.fellofBridgeClip2;
-		} else {
-			return this.fellofGeneralAdvancedClip1;
-		}
-
-		return null;
-	}
-
 	void OnCollisionEnter(Collision other)
 	{
 		if (other.transform.tag == "Enemy")
@@ -310,7 +145,7 @@ public class FirstPersonController : MonoBehaviour {
 		}
 	}
 	
-	void Die()
+	public void Die()
 	{		
 		transform.position = spawn;
 	}
