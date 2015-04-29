@@ -102,9 +102,15 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void ToCenter(){
-		currentLevel += 1;
+		//currentLevel += 1;
 		SaveGame ();
 		Application.LoadLevel("main_menu");
+		Time.timeScale = 1f;
+	}
+
+	public void QuitGame(){
+		SaveGame ();
+		Application.Quit ();
 		Time.timeScale = 1f;
 	}
 	
@@ -138,7 +144,7 @@ public class GameManager : MonoBehaviour {
 			}
 			if (GUI.Button(new Rect(winScreenRect.x + winScreenRect.width / 2 - 75, winScreenRect.y + winScreenRect.height / 5*4, 150, 40), "Exit"))
 			{
-				Application.Quit ();
+				QuitGame();
 			}
 			
 			//GUI.Label(new Rect(winScreenRect.x + 20, winScreenRect.y + 40, 300, 50), " Score");
