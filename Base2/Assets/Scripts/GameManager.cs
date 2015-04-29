@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	public void PauseMenu(){
+	void PauseMenu(){
 		showPauseMenu = !showPauseMenu;
 		if(showPauseMenu){
 			//Cursor.visible = true;
@@ -101,13 +101,6 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	public void ToCentral(){
-		currentLevel += 1;
-		SaveGame ();
-		Application.LoadLevel("main_menu");
-		Time.timeScale = 1f;
-	}
-	
 	void OnGUI()
 	{
 		GUI.skin = skin;
@@ -130,11 +123,17 @@ public class GameManager : MonoBehaviour {
 			}
 			if (GUI.Button(new Rect(winScreenRect.x + winScreenRect.width / 2 - 75, winScreenRect.y + winScreenRect.height / 5*2, 150, 40), "Center"))
 			{
-				ToCentral();
+				currentLevel += 1;
+				SaveGame ();
+				Application.LoadLevel("main_menu");
+				Time.timeScale = 1f;
 			}
 			if (GUI.Button(new Rect(winScreenRect.x + winScreenRect.width / 2 - 75, winScreenRect.y + winScreenRect.height / 5*3, 150, 40), "Options"))
 			{
-				ToCentral();
+				currentLevel += 1;
+				SaveGame ();
+				Application.LoadLevel("main_menu");
+				Time.timeScale = 1f;
 			}
 			if (GUI.Button(new Rect(winScreenRect.x + winScreenRect.width / 2 - 75, winScreenRect.y + winScreenRect.height / 5*4, 150, 40), "Exit"))
 			{
