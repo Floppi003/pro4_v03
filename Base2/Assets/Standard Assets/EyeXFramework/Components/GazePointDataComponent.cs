@@ -54,8 +54,9 @@ public class GazePointDataComponent : MonoBehaviour
 
 			if (Physics.Raycast (gazeRay.origin, gazeRay.direction, out gazeRaycastHit, 30)) {
 				//Debug.Log ("I fixed: " + fixationRaycastHit.collider.gameObject.name);
-
-				colorCollider.transform.position = gazeRaycastHit.transform.position;
+				if (gazeRaycastHit.transform.gameObject.tag == "RedButton") {
+					colorCollider.transform.position = gazeRaycastHit.transform.position;
+				}
 			}
 		}
     }
