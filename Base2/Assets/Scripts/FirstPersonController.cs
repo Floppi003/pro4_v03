@@ -48,6 +48,7 @@ public class FirstPersonController : MonoBehaviour {
 
 	
 	void Awake() {
+		//Cursor.visible = false;
 		Screen.lockCursor = true;
 		cameraTransform = Camera.main.transform;
 		spawn = transform.position;
@@ -140,7 +141,6 @@ public class FirstPersonController : MonoBehaviour {
 		}
 		if (other.transform.tag == "Goal")
 		{
-			Time.timeScale = 0f;
 			manager.CompleteLevel();
 		}
 	}
