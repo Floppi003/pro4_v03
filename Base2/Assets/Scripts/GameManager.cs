@@ -4,7 +4,7 @@ using System.Collections;
 public class GameManager : MonoBehaviour {
 
 	// Count
-	int maxLevels = 6; //max id = maxLevels - 1
+	int maxLevels = 7; //max id = maxLevels - 1
 	public int currentLevel = 1; //start with 1 = id 0
 	public int unlockedLevel = 1; //start with 1 = id 0
 
