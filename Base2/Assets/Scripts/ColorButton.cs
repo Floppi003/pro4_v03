@@ -17,35 +17,24 @@ public class ColorButton : MonoBehaviour {
 	void Update () {
 	}
 
-	void OnTriggerStay(Collider other) {
-		//Material mat_button = Instantiate(Resources.Load("Button", typeof(Material))) as Material;
-		//Material mat_button1 = Instantiate(Resources.Load("Button1", typeof(Material))) as Material;
+	void OnTriggerStay(Collider col) {
 		
-		if (other.gameObject.tag == "RedButton") {
-			//Debug.LogError ("Red Button!!!!!!!!");
-//			other.gameObject.GetComponent<Renderer>().material = mat_button;
+		if (col.tag == "RedButton") {
+			col.GetComponent<Renderer> ().material = selectedMaterial;
+		} else if (col.tag == "GreenButton") {
 			
-		} else if (other.gameObject.tag == "GreenButton") {
-			//Debug.LogError ("Green Button!!!!!!!!");
-			
-//			other.gameObject.GetComponent<Renderer>().material = mat_button;
-			
-		} else if (other.gameObject.tag == "BlueButton") {
-			//Debug.LogError ("Blue Button!!!!!!!!");
-			
-//			other.gameObject.GetComponent<Renderer>().material = mat_button;
-		}
-		//other.material = new PhysicMaterial("test");
-		if (other.tag == "RedButton") {
-			other.GetComponent<Renderer> ().material = selectedMaterial;
+		} else if (col.tag == "BlueButton") {
 
 		}
-		//Debug.Log ("OurOnTriggerStay");	
 	}
 
 	void OnTriggerExit(Collider col) {
 		if (col.tag == "RedButton") {
 			col.GetComponent<Renderer> ().material = defaultMaterial;
+		} else if (col.tag == "GreenButton") {
+			
+		} else if (col.tag == "BlueButton") {
+			
 		}
 	}
 }

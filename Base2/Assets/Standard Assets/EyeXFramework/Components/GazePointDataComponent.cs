@@ -43,21 +43,5 @@ public class GazePointDataComponent : MonoBehaviour
     protected void Update()
     {
         LastGazePoint = _dataProvider.Last;
-
-		// Get the last fixation point.
-		EyeXGazePoint lastGazePoint = GetComponent<GazePointDataComponent>().LastGazePoint;
-
-		if (lastGazePoint.IsValid) {
-			Vector2 screenCoordinates = lastGazePoint.Screen;
-			Vector3 worldCoordinates = Camera.main.ScreenToWorldPoint (new Vector3 (screenCoordinates.x, screenCoordinates.y, 0));
-			Ray gazeRay = Camera.main.ScreenPointToRay (new Vector3 (screenCoordinates.x, screenCoordinates.y, 0));
-
-			if (Physics.Raycast (gazeRay.origin, gazeRay.direction, out gazeRaycastHit, 30)) {
-				//Debug.Log ("I fixed: " + fixationRaycastHit.collider.gameObject.name);
-				if (gazeRaycastHit.transform.gameObject.tag == "RedButton") {
-					colorCollider.transform.position = gazeRaycastHit.transform.position;
-				}
-			}
-		}
     }
 }

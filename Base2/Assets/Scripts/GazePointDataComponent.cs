@@ -15,6 +15,7 @@ public class GazePointDataComponent : MonoBehaviour
     public GazePointDataMode gazePointDataMode = GazePointDataMode.LightlyFiltered;
 	public SphereCollider colorCollider;
 
+	private float colliderAlive = 0;
     private EyeXHost _eyexHost;
     private IEyeXDataProvider<EyeXGazePoint> _dataProvider;
 	private RaycastHit gazeRaycastHit;
@@ -71,7 +72,10 @@ public class GazePointDataComponent : MonoBehaviour
 				string gazedObject = gazeRaycastHit.collider.gameObject.name;
 
 				// set collider to gazed position (used for multiple buttons that will be colored due to the collider then)
-				colorCollider.transform.position = gazeRaycastHit.transform.position;
+				if (gazeRaycastHit.transform.gameObject.tag == "ColorButton") {
+					colorCollider.transform.position = gazeRaycastHit.transform.position;
+					colliderAlive = 2;
+				}
 
 				AudioFilesLevelFloppi afFloppi = GameObject.Find ("AudioFilesLevelFloppi").GetComponent<AudioFilesLevelFloppi>();
 				
@@ -99,6 +103,13 @@ public class GazePointDataComponent : MonoBehaviour
 						buttonList.Add (new ButtonTimeToLive(gazeRaycastHit.collider.gameObject, 0.1f));
 					}
 				}
+			}
+		}
+
+		if (colliderAlive > 0) {
+			colliderAlive -= Time.deltaTime;
+			if (colliderAlive <= 0) {
+				colorCollider.transform.position = new Vector3(3, 4, -47);
 			}
 		}
     }
