@@ -63,7 +63,8 @@ public class AudioManager : MonoBehaviour {
 	}
 
 	public bool playAudioClipIfFree(AudioClip audioClip) {
-		if (!audioSource.isPlaying) {
+		if (timeSinceLastPlay > timeOfLastPlayedClip && audioQueue.Count == 0) {
+			// not playing anymore
 			timeOfLastPlayedClip = audioClip.length;
 			timeSinceLastPlay = 0.0f;
 
