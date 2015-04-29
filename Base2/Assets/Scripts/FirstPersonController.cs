@@ -120,7 +120,7 @@ public class FirstPersonController : MonoBehaviour {
 	
 	void FixedUpdate() {
 		// Apply movement to rigidbody
-		Vector3 localMove = transform.TransformDirection(moveAmount) * Time.fixedDeltaTime; //transform to local space (instead of world space - move on the surface of the sphere)
+		Vector3 localMove = transform.TransformDirection(moveAmount) * Time.deltaTime; //transform to local space (instead of world space - move on the surface of the sphere)
 		GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + localMove);
 	}
 
