@@ -6,7 +6,7 @@ using System.Collections;
 public class FirstPersonController : MonoBehaviour {
 	public GameManager manager;
 	private Vector3 spawn;
-
+	
 	// public vars
 	public Text sensitivityText;
 	public float mouseSensitivityX = 250;
@@ -15,7 +15,7 @@ public class FirstPersonController : MonoBehaviour {
 	public float jumpForce = 260; //jump height/strength
 	public float jumpDamping = 3.5f; // reduced movement while jumping
 	public LayerMask groundedMask; //mask for raytracing/jumping - reference plane for the raycast#
-
+	
 	// ---- jump width tests
 	public float jumpHeight = 0;
 	public float jumpWidth = 0;
@@ -27,7 +27,7 @@ public class FirstPersonController : MonoBehaviour {
 	public bool inAir;
 	public bool debug = true;
 	//
-
+	
 	// audio files
 	public AudioClip greenClip1;
 	public AudioClip greenClip2;
@@ -36,18 +36,18 @@ public class FirstPersonController : MonoBehaviour {
 	public AudioClip redClip2;
 	public AudioClip blueClip1;
 	public AudioClip blueClip2;
-
-
+	
+	
 	private float timeSinceLastButtonAudioPlay = 0.0f;
-
-
+	
+	
 	// System vars
 	bool grounded;
 	Vector3 moveAmount;
 	Vector3 smoothMoveVelocity;
 	float verticalLookRotation;
 	Transform cameraTransform;
-
+	
 	
 	void Awake() {
 		//Cursor.visible = false;
@@ -57,7 +57,7 @@ public class FirstPersonController : MonoBehaviour {
 	}
 	
 	void Update() {
-	
+		
 		timeSinceLastButtonAudioPlay += Time.deltaTime;
 		// set dampig dependend if grounded or not
 		float damping;
@@ -75,19 +75,19 @@ public class FirstPersonController : MonoBehaviour {
 		// Calculate movement:
 		float inputX = Input.GetAxisRaw("Horizontal");
 		float inputY = Input.GetAxisRaw("Vertical");
-
+		
 		Vector3 moveDir = new Vector3(inputX, 0, inputY).normalized;
 		Vector3 targetMoveAmount = moveDir * walkSpeed;
-
+		
 		moveAmount = Vector3.SmoothDamp (moveAmount, targetMoveAmount, ref smoothMoveVelocity, 0.15f * damping); //ref allows to modify a global variable
-
+		
 		// Jump
 		if (debug && inAir && GetComponent<Rigidbody> ().position.y <= 1.0001f) {
 			inAir = false;
 			jumpEnd = GetComponent<Rigidbody> ().position; //-----------
 			jumpWidth = (jumpEnd - jumpStart).magnitude;
 		}
-
+		
 		if (Input.GetButtonDown("Jump")) {
 			Debug.Log("Jump!");
 			if (IsGrounded()) {
@@ -97,13 +97,13 @@ public class FirstPersonController : MonoBehaviour {
 				Debug.Log("Grounded!");
 			}
 		}
-
+		
 		//----------------
 		if (debug) {
 			if (Time.time > 3 && jumpHeight <= GetComponent<Rigidbody> ().position.y - 1) { //-----------
 				jumpHeight = GetComponent<Rigidbody> ().position.y - 1; 
 			}
-
+			
 			if (timePassed >= 1) {
 				speed = (transform.position - lastPos).magnitude / timePassed;
 				timePassed = 0;
@@ -125,8 +125,8 @@ public class FirstPersonController : MonoBehaviour {
 		Vector3 localMove = transform.TransformDirection(moveAmount) * Time.deltaTime; //transform to local space (instead of world space - move on the surface of the sphere)
 		GetComponent<Rigidbody>().MovePosition(GetComponent<Rigidbody>().position + localMove);
 	}
-
-
+	
+	
 	void OnCollisionEnter(Collision other)
 	{
 		if (other.transform.tag == "Enemy")
@@ -151,12 +151,12 @@ public class FirstPersonController : MonoBehaviour {
 	{		
 		transform.position = spawn;
 	}
-
+	
 	public void ChangeMouseSensitivity(float sensitivity){
 		mouseSensitivityX = sensitivity;
 		mouseSensitivityY = sensitivity;
 		string sensitivityString = sensitivity.ToString ();
 		sensitivityText.text = sensitivityString;
-
+		
 	}
 }
