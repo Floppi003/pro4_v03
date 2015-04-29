@@ -176,7 +176,7 @@ public class EyePositionDataComponent : MonoBehaviour
 
 					// both eyes were closed for a while, if you are in felldown mode respawn
 					FirstPersonController fps = GameObject.Find ("Player").GetComponent<FirstPersonController>();
-					AudioFilesLevelFloppi afFloppi = GameObject.Find ("AudioFilesLevelFloppi").GetComponent<AudioFilesLevelFloppi>();
+/*-----------					AudioFilesLevelFloppi afFloppi = GameObject.Find ("AudioFilesLevelFloppi").GetComponent<AudioFilesLevelFloppi>();
 
 					AudioSource audioSource = fps.gameObject.GetComponent<AudioSource>();
 
@@ -189,7 +189,7 @@ public class EyePositionDataComponent : MonoBehaviour
 						if (afFloppi.bridgeFelldownCounter >= 2) {
 							AudioManager.instance.queueAudioClip(afFloppi.getBridgeBeforeClip());
 						}
-					}
+					} */
 				}
 
 				this.eyesOpenedQueue.Dequeue ();
