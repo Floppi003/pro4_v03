@@ -31,6 +31,8 @@ public class ColorButton : MonoBehaviour {
 	void OnTriggerExit(Collider col) {
 		if (col.tag == "RedButton") {
 			col.GetComponent<Renderer> ().material = defaultMaterial;
+			
+			col.transform.parent.gameObject.GetComponent<Animator> ().Play("ButtonPress");
 		} else if (col.tag == "GreenButton") {
 			
 		} else if (col.tag == "BlueButton") {
