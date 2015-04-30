@@ -14,6 +14,7 @@ public class AudioManager : MonoBehaviour {
 
 	private static Queue<AudioClip> audioQueue;
 	private static AudioSource audioSource;
+	private static AudioSource backgroundAudioSource;
 	private static float timeSinceLastPlay; // in seconds
 	private float timeOfLastPlayedClip; // in seconds
  
@@ -26,7 +27,7 @@ public class AudioManager : MonoBehaviour {
 				//Tell unity not to destroy this object when loading a new scene!
 				//DontDestroyOnLoad(_instance.gameObject);
 			}
-			
+
 			return _instance;
 		}
 	}
@@ -36,8 +37,10 @@ public class AudioManager : MonoBehaviour {
 			//If I am the first instance, make me the Singleton
 			_instance = this;
 			audioQueue = new Queue<AudioClip>();
-			audioSource = GameObject.Find ("Player").GetComponent<AudioSource>();
-			audioSource.ignoreListenerVolume = true;
+			AudioSource[] audioSources = GameObject.Find ("Player").GetComponents<AudioSource>();
+			audioSource = audioSources[0];
+			backgroundAudioSource = audioSources[1];
+
 			//DontDestroyOnLoad(this);
 		}
 		else {
@@ -106,15 +109,16 @@ public class AudioManager : MonoBehaviour {
 
 	public void ChangeSoundVolume(float soundVolume){ //between 0 and 1
 		//change volume of sound effects (speech)
-		AudioListener audioListner = GameObject.Find ("Main Camera").GetComponent<AudioListener> ();
-		AudioListener.volume = soundVolume;
+		//AudioListener audioListner = GameObject.Find ("Main Camera").GetComponent<AudioListener> ();
+		//AudioListener.volume = soundVolume;
+		audioSource.volume = soundVolume;
 		// Best tutorial:
 		// http://answers.unity3d.com/questions/306684/how-to-change-volume-on-many-audio-objects-with-sp.html
 	}
 
 	public void ChangeMusicVolume(float musicVolume){ // between 0 and 1
 		//change volume of background music
-		audioSource.volume = musicVolume;
+		backgroundAudioSource.volume = musicVolume;
 
 		// Best tutorial:
 		// http://answers.unity3d.com/questions/306684/how-to-change-volume-on-many-audio-objects-with-sp.html
