@@ -18,8 +18,10 @@ public class CameraRaycast : MonoBehaviour {
 		if (Physics.Raycast (cam.transform.position, cam.gameObject.transform.forward, out interactionRaycastHit, 2)) {
 			if (interactionRaycastHit.collider.gameObject.tag == "Interaction") {
 				loadPrompt = "Press [F] for Interaction";
-
 				//Debug.LogError("InteractionRaycastHit.");
+			} else if (interactionRaycastHit.collider.gameObject.tag == "LevelButton"){
+				loadPrompt = interactionRaycastHit.collider.gameObject.GetComponent<LevelLoaderNew>().GetText ();
+				interactionRaycastHit.collider.gameObject.GetComponent<LevelLoaderNew>().LevelButtonPressed();
 			} else {
 				loadPrompt = "";
 			}

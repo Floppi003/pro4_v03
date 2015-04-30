@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
 	public Canvas pauseMenu;
-
+	public AudioManager audioManager;
 	// Count
 	int maxLevels = 6; //max id = maxLevels - 1
 	public int currentLevel = 1; //start with 1 = id 0

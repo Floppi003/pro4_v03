@@ -16,6 +16,7 @@ TagManager:
   - GreenButton
   - ColorButton
   - Interaction
+  - LevelButton
   layers:
   - Default
   - TransparentFX
