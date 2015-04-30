@@ -22,7 +22,10 @@ public class CameraRaycast : MonoBehaviour {
 			} else if (interactionRaycastHit.collider.gameObject.tag == "LevelButton"){
 				loadPrompt = interactionRaycastHit.collider.gameObject.GetComponent<LevelLoaderNew>().GetText ();
 				interactionRaycastHit.collider.gameObject.GetComponent<LevelLoaderNew>().LevelButtonPressed();
-			} else {
+			} else if (interactionRaycastHit.collider.gameObject.tag == "Exploder"){
+				Debug.LogFormat ("Explode Dammit!");
+				interactionRaycastHit.collider.gameObject.GetComponent<Explosion>().Explode();
+			}else {
 				loadPrompt = "";
 			}
 		} else {
