@@ -9134,6 +9134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59839f6e29086dd4bbb7d288783eb4fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 0}
   currentLevel: 1
   unlockedLevel: 1
   skin: {fileID: 0}

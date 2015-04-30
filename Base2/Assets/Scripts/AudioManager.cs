@@ -37,6 +37,7 @@ public class AudioManager : MonoBehaviour {
 			_instance = this;
 			audioQueue = new Queue<AudioClip>();
 			audioSource = GameObject.Find ("Player").GetComponent<AudioSource>();
+			audioSource.ignoreListenerVolume = true;
 			//DontDestroyOnLoad(this);
 		}
 		else {
@@ -105,13 +106,15 @@ public class AudioManager : MonoBehaviour {
 
 	public void ChangeSoundVolume(float soundVolume){ //between 0 and 1
 		//change volume of sound effects (speech)
-
+		AudioListener audioListner = GameObject.Find ("Main Camera").GetComponent<AudioListener> ();
+		AudioListener.volume = soundVolume;
 		// Best tutorial:
 		// http://answers.unity3d.com/questions/306684/how-to-change-volume-on-many-audio-objects-with-sp.html
 	}
 
 	public void ChangeMusicVolume(float musicVolume){ // between 0 and 1
 		//change volume of background music
+		audioSource.volume = musicVolume;
 
 		// Best tutorial:
 		// http://answers.unity3d.com/questions/306684/how-to-change-volume-on-many-audio-objects-with-sp.html
