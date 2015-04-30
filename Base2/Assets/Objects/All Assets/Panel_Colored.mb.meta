@@ -8,9 +8,11 @@ ModelImporter:
     100000: //RootNode
     100002: pCube3
     100004: pCube4
+    100006: group1
     400000: //RootNode
     400002: pCube3
     400004: pCube4
+    400006: group1
     2300000: pCube3
     2300002: pCube4
     3300000: pCube3

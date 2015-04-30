@@ -17,12 +17,14 @@ public class CameraRaycast : MonoBehaviour {
 		Debug.DrawRay (cam.transform.position, cam.gameObject.transform.forward, Color.cyan, 2);
 		if (Physics.Raycast (cam.transform.position, cam.gameObject.transform.forward, out interactionRaycastHit, 2)) {
 			if (interactionRaycastHit.collider.gameObject.tag == "Interaction") {
+				loadPrompt = "Press [F] for Interaction";
 
-				interactionRaycastHit.collider.GetComponent<InteractionButton>().Update();
-				interactionRaycastHit.collider.GetComponent<InteractionButton>().OnTriggerStay(interactionRaycastHit.collider);
-
-				//Debug.LogError("RAYCASTHIT.");
+				//Debug.LogError("InteractionRaycastHit.");
+			} else {
+				loadPrompt = "";
 			}
+		} else {
+			loadPrompt = "";
 		}
 	}
 

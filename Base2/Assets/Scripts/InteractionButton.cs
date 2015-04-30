@@ -8,23 +8,21 @@ public class InteractionButton : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
 	}
 
 	// Update is called once per frame
 	public void Update () {
 		if (Input.GetButtonDown("ButtonPressed")) 
 		{
-	//		Application.LoadLevel ("Button pressed.");
 			Debug.Log("Button pressed.");
+			playAnimation();
+
+	//		Application.LoadLevel ("Button pressed.");
 		}
 	}
 
-	public void OnTriggerStay(Collider other) {
-			loadPrompt = "[F] for Interaction";
-	}
+	void playAnimation() {
+		GetComponent<Animator> ().Play("Push");
 
-	public void OnTriggerExit() {
-		loadPrompt = "";
 	}
 }
