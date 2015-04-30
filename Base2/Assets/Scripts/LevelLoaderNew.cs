@@ -7,21 +7,23 @@ public class LevelLoaderNew : MonoBehaviour {
 	private string loadPrompt;
 	//private bool inRange;
 	private int unlockedLevel;
-	private bool canLoadLevel;
+	private bool canLoadLevel = true;
 
 	void Start()
 	{
 		unlockedLevel = PlayerPrefs.GetInt ("Level Unlocked");
+		PlayerPrefs.SetInt("Chosen Level", unlockedLevel);
 		/*
 		if (unlockedLevel == 0) 
 		{
 			unlockedLevel = 1;
 		}
 		*/
+
 		canLoadLevel = levelToLoad <= unlockedLevel ? true : false;
 		if(!canLoadLevel)
 		{
-			Instantiate (padlock, new Vector3(transform.position.x - 5.5f, 1.5f, transform.position.z), Quaternion.identity);
+			Instantiate (padlock, new Vector3(transform.position.x - 0.7f, 1.5f, transform.position.z), Quaternion.identity);
 		}
 	}
 
@@ -33,7 +35,8 @@ public class LevelLoaderNew : MonoBehaviour {
 				PlayerPrefs.SetInt ("Current Level", 1);
 				Application.LoadLevel("Level 1");
 			} else {
-	//			Application.LoadLevel ("Level " + levelToLoad.ToString ()); //load by name instead of id
+				PlayerPrefs.SetInt("Chosen Level", levelToLoad);
+		//		Application.LoadLevel ("Level " + levelToLoad.ToString ()); //load by name instead of id
 			}
 
 			Debug.Log("Button pressed.");
