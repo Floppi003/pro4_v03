@@ -14,6 +14,8 @@ TagManager:
   - RedButton
   - BlueButton
   - GreenButton
+  - ColorButton
+  - Interaction
   layers:
   - Default
   - TransparentFX
