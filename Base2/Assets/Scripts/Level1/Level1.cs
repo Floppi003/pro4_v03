@@ -17,7 +17,7 @@ public class Level1 : MonoBehaviour {
 	void Update() {
 		elapsedTime += Time.deltaTime;
 
-		if (elapsedTime > 3.0f && !openFirstDoorAnimationStarted) {
+		if (elapsedTime > 9.0f && !openFirstDoorAnimationStarted) {
 			Debug.Log ("animation started");
 			openFirstDoorAnimationStarted = true;
 			GameObject.Find ("FirstDoor").GetComponent<Animator>().Play ("OpenDoor");
