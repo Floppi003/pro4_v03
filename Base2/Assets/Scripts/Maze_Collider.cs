@@ -22,9 +22,7 @@ public class Maze_Collider : MonoBehaviour {
 	void OnTriggerStay(Collider other) {
 		if (other.tag == "Player") {
 			//	Debug.Log ("Player detected");
-			
-			//Quaternion wantedAngle = Quaternion.Euler(angle);
-			
+
 			angle = transform.rotation.y;
 			playerViewAngle = cam.transform.rotation.y;
 

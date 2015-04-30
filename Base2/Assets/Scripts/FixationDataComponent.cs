@@ -54,7 +54,6 @@ public class FixationDataComponent : MonoBehaviour
 
 					colorCollider.transform.position = fixationRaycastHit.transform.position;
 
-
 					//fixationRaycastHit.collider.gameObject.transform.position = new Vector3(0, 0, 0); 
 
 					//Debug.Log ("fixedObject: " + fixedObject);
@@ -83,6 +82,7 @@ public class FixationDataComponent : MonoBehaviour
 			{
 				// The fixation ended.
 			}
+
 
 			
 			/*Ray fixationRay = Camera.main.ScreenPointToRay(new Vector3(screenCoordinates.x, screenCoordinates.y, 0.0f));
