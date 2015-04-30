@@ -86,12 +86,12 @@ public class FirstPersonController : MonoBehaviour {
 		}
 		
 		if (Input.GetButtonDown("Jump")) {
-		//	Debug.Log("Jump!");
+
 			if (IsGrounded()) {
 				jumpStart = GetComponent<Rigidbody>().position; //-----------
 				inAir = true;
 				GetComponent<Rigidbody>().AddForce(transform.up * jumpForce);
-		//		Debug.Log("Grounded!");
+
 			}
 		}
 
