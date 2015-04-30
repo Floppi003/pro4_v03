@@ -1,25 +1,15 @@
 fileFormatVersion: 2
-guid: 8ff399b310cd7604ab42bcc7451591ca
-timeCreated: 1430316024
+guid: 4f9156fce5c6b2e4889d8953c6c8d338
+timeCreated: 1430404612
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Door_4x4
-    100004: pCube1
     400000: //RootNode
-    400002: Door_4x4
-    400004: pCube1
     2300000: //RootNode
-    2300002: Door_4x4
-    2300004: pCube1
     3300000: //RootNode
-    3300002: Door_4x4
-    3300004: pCube1
-    4300000: Door_4x4
-    4300002: pCube1
-    7400000: Take 001
+    4300000: pCube1
     9500000: //RootNode
   materials:
     importMaterials: 1
