@@ -15,4 +15,8 @@ public class AudioFilesLevel1 : MonoBehaviour {
 	void Update () {
 	
 	}
+
+	public AudioClip getWakeupAudioClip() {
+		return this.wakeupAudioClip;
+	}
 }

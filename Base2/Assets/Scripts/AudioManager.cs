@@ -22,7 +22,7 @@ public class AudioManager : MonoBehaviour {
 	public static AudioManager instance {
 		get {
 			if(_instance == null) {
-				Debug.LogError ("Creating Instance!");
+				//Debug.LogError ("Creating Instance!");
 				
 				//Tell unity not to destroy this object when loading a new scene!
 				//DontDestroyOnLoad(_instance.gameObject);
