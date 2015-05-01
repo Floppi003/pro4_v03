@@ -1,4 +1,4 @@
-
+/*
 
 using UnityEngine;
 using System.Collections;
@@ -76,4 +76,4 @@ public class Level1 : MonoBehaviour {
 	void OnTriggerExit(Collider other) {
 		Debug.Log ("OnTriggerExit");
 	}
-}
+}*/
