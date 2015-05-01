@@ -247,17 +247,6 @@ MonoBehaviour:
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 0b4d404cf4412ef43a81257c33bad96e, type: 3}
   m_PrefabInternal: {fileID: 1987140757}
---- !u!114 &389076579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 389076578}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b4715a798a3f4d47b7ad5376e9fcd78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &389076580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -540,17 +529,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1011688539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1011688536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b4715a798a3f4d47b7ad5376e9fcd78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &1011688541
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -802,17 +780,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1388447436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1388447433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b4715a798a3f4d47b7ad5376e9fcd78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &1388447438
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1132,17 +1099,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1743089849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1743089846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b4715a798a3f4d47b7ad5376e9fcd78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &1743089851
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1304,17 +1260,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelToLoad: 4
   padlock: {fileID: 185332, guid: 5a9da2ca5e3003a4ab654949cc5bec3c, type: 2}
---- !u!114 &1859703722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1859703719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b4715a798a3f4d47b7ad5376e9fcd78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &1859703724
 MeshCollider:
   m_ObjectHideFlags: 0
