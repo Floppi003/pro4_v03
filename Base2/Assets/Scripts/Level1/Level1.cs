@@ -1,4 +1,4 @@
-/*
+
 
 using UnityEngine;
 using System.Collections;
@@ -32,7 +32,8 @@ public class Level1 : MonoBehaviour {
 
 	void Start() {
 		audioFiles = GameObject.Find ("AudioFilesLevel1").GetComponent<AudioFilesLevel1> ();
-
+		AudioClip ac = new AudioClip ();
+		AudioManager.instance.queueAudioClip (ac);
 		Debug.Log ("Start");
 	}
 
@@ -77,4 +78,4 @@ public class Level1 : MonoBehaviour {
 	void OnTriggerExit(Collider other) {
 		Debug.Log ("OnTriggerExit");
 	}
-}*/
+}

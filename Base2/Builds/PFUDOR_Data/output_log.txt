@@ -18,7 +18,7 @@ Platform assembly: C:\Users\Floppi\Desktop\FH_Semester_04\pro4_v03\Base2\Builds\
 Loading C:\Users\Floppi\Desktop\FH_Semester_04\pro4_v03\Base2\Builds\PFUDOR_Data\Managed\Tobii.EyeX.Client.Net20.dll into Unity Child Domain
 Platform assembly: C:\Users\Floppi\Desktop\FH_Semester_04\pro4_v03\Base2\Builds\PFUDOR_Data\Managed\Tobii.EyeX.Client.Net20.dll (this message is harmless)
 Loading C:\Users\Floppi\Desktop\FH_Semester_04\pro4_v03\Base2\Builds\PFUDOR_Data\Managed\Tobii.EyeX.Client.Net20.dll into Unity Child Domain
-- Completed reload, in  0.096 seconds
+- Completed reload, in  0.050 seconds
 desktop: 1920x1200 60Hz; virtual: 1920x1200 at 0,0
 <RI> Initializing input.
 XInput1_3.dll not found.
@@ -32,8 +32,8 @@ IndexOutOfRangeException: Array index is out of range.
 (Filename:  Line: -1)
 
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 1484 -> priority: 1 
-  Thread -> id: 1408 -> priority: 1 
+  Thread -> id: 10b8 -> priority: 1 
+  Thread -> id: c18 -> priority: 1 
 Button pressed.
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
@@ -42,6 +42,14 @@ My name is 1
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
+Button pressed.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
+My name is 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
+
 Player detected
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
@@ -55,137 +63,30 @@ Player detected
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
 OnTriggerEnter
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-The referenced script on this Behaviour is missing!
- 
-(Filename:  Line: 1713)
-
-The referenced script on this Behaviour is missing!
- 
-(Filename:  Line: 1713)
-
-The referenced script on this Behaviour is missing!
- 
-(Filename:  Line: 1713)
-
-The referenced script on this Behaviour is missing!
- 
-(Filename:  Line: 1713)
-
-The referenced script on this Behaviour is missing!
- 
-(Filename:  Line: 1713)
-
-Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 4.201321 ms
-IndexOutOfRangeException: Array index is out of range.
-  at AudioManager.Awake () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-
-Unloading 21 unused Assets to reduce memory usage. Loaded Objects now: 781.
-Total: 0.434462 ms (FindLiveObjects: 0.071840 ms CreateObjectMapping: 0.026987 ms MarkObjects: 0.273296 ms  DeleteObjects: 0.061197 ms)
-
-The referenced script on this Behaviour is missing!
- 
-(Filename:  Line: 1713)
-
-The referenced script on this Behaviour is missing!
- 
-(Filename:  Line: 1713)
-
-The referenced script on this Behaviour is missing!
- 
-(Filename:  Line: 1713)
-
-The referenced script on this Behaviour is missing!
- 
-(Filename:  Line: 1713)
-
-The referenced script on this Behaviour is missing!
- 
-(Filename:  Line: 1713)
-
-Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.228505 ms
-IndexOutOfRangeException: Array index is out of range.
-  at AudioManager.Awake () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-
-Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 781.
-Total: 0.364142 ms (FindLiveObjects: 0.030408 ms CreateObjectMapping: 0.024706 ms MarkObjects: 0.304085 ms  DeleteObjects: 0.004181 ms)
-
-Setting up 2 worker threads for Enlighten.
-  Thread -> id: 14b0 -> priority: 1 
-  Thread -> id: 854 -> priority: 1 
-currentLevel before: 2
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-currentLevel after: 3
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-3
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.790622 ms
-
-Unloading 27 unused Assets to reduce memory usage. Loaded Objects now: 388.
-Total: 0.359961 ms (FindLiveObjects: 0.053975 ms CreateObjectMapping: 0.024706 ms MarkObjects: 0.215900 ms  DeleteObjects: 0.063097 ms)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at GameManager.Start () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at GameManager.PauseMenu () [0x00000] in <filename unknown>:0 
-  at GameManager.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at GameManager.PauseMenu () [0x00000] in <filename unknown>:0 
-  at GameManager.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at GameManager.PauseMenu () [0x00000] in <filename unknown>:0 
-  at GameManager.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-currentLevel before: 1
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-currentLevel after: 2
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-2
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
 Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.483115 ms
+UnloadTime: 3.859985 ms
 IndexOutOfRangeException: Array index is out of range.
   at AudioManager.Awake () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
 
 
-Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 2571.
-Total: 0.497940 ms (FindLiveObjects: 0.115172 ms CreateObjectMapping: 0.041811 ms MarkObjects: 0.316248 ms  DeleteObjects: 0.023946 ms)
+Unloading 29 unused Assets to reduce memory usage. Loaded Objects now: 2573.
+Total: 0.648462 ms (FindLiveObjects: 0.153943 ms CreateObjectMapping: 0.053214 ms MarkObjects: 0.372124 ms  DeleteObjects: 0.068419 ms)
+
+Unloading 1 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 4.168252 ms
+IndexOutOfRangeException: Array index is out of range.
+  at AudioManager.Awake () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 2573.
+Total: 0.650362 ms (FindLiveObjects: 0.164206 ms CreateObjectMapping: 0.039911 ms MarkObjects: 0.430661 ms  DeleteObjects: 0.014444 ms)
 
 Fallback handler could not load library C:/Users/Floppi/Desktop/FH_Semester_04/pro4_v03/Base2/Builds/PFUDOR_Data/Mono/Tobii.EyeX.Client.dll
 Fallback handler could not load library C:/Users/Floppi/Desktop/FH_Semester_04/pro4_v03/Base2/Builds/PFUDOR_Data/Mono/.\Tobii.EyeX.Client.dll
@@ -226,68 +127,12 @@ NullReferenceException: Object reference not set to an instance of an object
  
 (Filename:  Line: -1)
 
-NullReferenceException: Object reference not set to an instance of an object
-  at GameManager.PauseMenu () [0x00000] in <filename unknown>:0 
-  at GameManager.Update () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-Button pressed.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-Explooooooode!
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-Button pressed.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-Explooooooode!
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-Button pressed.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-Explooooooode!
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-Button pressed.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-Explooooooode!
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-OnTriggerEnter
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-OnTriggerEnter
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
-OnTriggerEnter
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
-
 OnTriggerEnter
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebug.gen.cpp Line: 56)
 
 NullReferenceException: Object reference not set to an instance of an object
   at BridgeCollider.OnTriggerEnter (UnityEngine.Collider other) [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-NullReferenceException: Object reference not set to an instance of an object
-  at GameManager.PauseMenu () [0x00000] in <filename unknown>:0 
-  at GameManager.Update () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
 
