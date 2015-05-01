@@ -1,8 +1,7 @@
-
+/*
 
 using UnityEngine;
 using System.Collections;
-using AudioManager;
 
 public class Level1 : MonoBehaviour { 
 
@@ -14,6 +13,7 @@ public class Level1 : MonoBehaviour {
 	private bool wallSoundPlayed;
 	private bool wakeupSoundPlayed;
 
+	private float timeTillWakeupSoundStarts;
 	private float timeTillFirstDoorOpens;
 	private float timeTillWallSoundStarts;
 
@@ -21,6 +21,7 @@ public class Level1 : MonoBehaviour {
 	void Awake() {
 		timeTillFirstDoorOpens = 9.0f;
 		timeTillWallSoundStarts = 3.0f;
+		timeTillWakeupSoundStarts = 2.0f;
 		
 		wakeupSoundPlayed = false;
 		openFirstDoorAnimationStarted = false;
@@ -39,10 +40,10 @@ public class Level1 : MonoBehaviour {
 		elapsedTime += Time.deltaTime;
 
 		// play the wakeup sound
-		if (wakeupSoundPlayed == false) {
+		if (timeTillWakeupSoundStarts < elapsedTime && wakeupSoundPlayed == false) {
 			wakeupSoundPlayed = true;
-			AudioClip ac = new AudioClip();
-			AudioManager.instance.queueAudioClip(ac);
+			Debug.Log ("Wakeup sound queued");
+			AudioManager.instance.queueAudioClip(audioFiles.wakeupAudioClip);
 		}
 
 		// If the wall trigger was triggered then start the countdown till the voice should start
@@ -76,4 +77,4 @@ public class Level1 : MonoBehaviour {
 	void OnTriggerExit(Collider other) {
 		Debug.Log ("OnTriggerExit");
 	}
-}
+}*/
