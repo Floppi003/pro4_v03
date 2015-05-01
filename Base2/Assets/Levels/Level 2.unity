@@ -44,7 +44,7 @@ LevelGameManager:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 5
-  m_GIWorkflowMode: 1
+  m_GIWorkflowMode: 0
   m_LightmapsMode: 1
   m_GISettings:
     serializedVersion: 2
@@ -68,7 +68,7 @@ LightmapSettings:
     m_TextureCompression: 0
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
-  m_LightmapSnapshot: {fileID: 112000000, guid: 2dac8d14a0d2d0b42affcb1d0ac6304e,
+  m_LightmapSnapshot: {fileID: 112000000, guid: 314bf9c1155ca8c418cc20892f586d6f,
     type: 2}
   m_RuntimeCPUUsage: 25
 --- !u!196 &5
@@ -9710,6 +9710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
+  audioManager: {fileID: 0}
   currentLevel: 1
   unlockedLevel: 1
   skin: {fileID: 0}
