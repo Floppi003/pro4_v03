@@ -18,7 +18,7 @@ public class InteractionButton : MonoBehaviour {
 	public void playAnimation() {
 		if (Input.GetButtonDown ("ButtonPressed")) {
 			GetComponent<Animator> ().Play ("Push");
-			Debug.Log("Button pressed.");
+		//	Debug.Log("Button pressed.");
 
 		// öffne die Tür
 			exploder.GetComponent<Explosion>().Explode();

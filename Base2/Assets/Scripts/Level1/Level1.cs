@@ -2,7 +2,7 @@
 
 using UnityEngine;
 using System.Collections;
-using AudioManager;
+//using AudioManager;
 
 public class Level1 : MonoBehaviour { 
 
@@ -42,7 +42,7 @@ public class Level1 : MonoBehaviour {
 		if (wakeupSoundPlayed == false) {
 			wakeupSoundPlayed = true;
 			AudioClip ac = new AudioClip();
-			AudioManager.instance.queueAudioClip(ac);
+//			AudioManager.instance.queueAudioClip(ac);
 		}
 
 		// If the wall trigger was triggered then start the countdown till the voice should start
@@ -52,7 +52,7 @@ public class Level1 : MonoBehaviour {
 			if (wallSoundPlayed == false && timeTillWallSoundStarts < 0) {
 				// play Audio Sound
 				wallSoundPlayed = true;
-				AudioManager.instance.queueAudioClip(audioFiles.firstWallAudioClip);
+//				AudioManager.instance.queueAudioClip(audioFiles.firstWallAudioClip);
 			}
 		}
 

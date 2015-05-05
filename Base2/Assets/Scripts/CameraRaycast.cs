@@ -27,7 +27,7 @@ public class CameraRaycast : MonoBehaviour {
 				interactionRaycastHit.collider.gameObject.GetComponent<LevelLoaderNew>().LevelButtonPressed();
 		
 			} else if (interactionRaycastHit.collider.gameObject.tag == "Exploder"){
-				Debug.LogFormat ("Explode Dammit!");
+		//		Debug.LogFormat ("Explode Dammit!");
 				interactionRaycastHit.collider.gameObject.GetComponent<Explosion>().Explode();
 		
 			}else {

@@ -17,7 +17,7 @@ public class Explosion : MonoBehaviour {
 
 	public void Explode()
 	{
-		Debug.Log ("Explooooooode!");
+	//	Debug.Log ("Explooooooode!");
 		//GameObject.Find ("Player").GetComponent<AudioSource>().clip = explosionSound;
 		GameObject.Find ("Player").GetComponent<AudioSource> ().PlayOneShot (explosionSound);
 		Instantiate(deathParticles, transform.position, Quaternion.Euler(270,0,0));
