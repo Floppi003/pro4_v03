@@ -26,15 +26,6 @@ public class FirstPersonController : MonoBehaviour {
 	public bool inAir;
 	public bool debug = true;
 	//
-	
-	// audio files
-	public AudioClip greenClip1;
-	public AudioClip greenClip2;
-	public AudioClip greenClip3;
-	public AudioClip redClip1;
-	public AudioClip redClip2;
-	public AudioClip blueClip1;
-	public AudioClip blueClip2;
 
 	private float timeSinceLastButtonAudioPlay = 0.0f;
 
