@@ -12,7 +12,7 @@ PlayerSettings:
   targetResolution: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Base
+  productName: Base2
   cloudProjectId: 
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -80,7 +80,7 @@ PlayerSettings:
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
   xboxOneDisableKinectGpuReservation: 0
-  productGUID: 5b8dba361bd95e64d97b27328043cf0c
+  productGUID: 303e1e8b8f442774f9410e8589fb2848
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 9
   AndroidPreferredInstallLocation: 1
@@ -130,21 +130,8 @@ PlayerSettings:
   - width: 320
     height: 180
     banner: {fileID: 0}
-<<<<<<< HEAD
   resolutionDialogBanner: {fileID: 0}
-  m_BuildTargetIcons:
-  - m_BuildTarget: 
-    m_Icons:
-    - m_Icon: {fileID: 0}
-=======
-  resolutionDialogBanner: {fileID: 2800000, guid: 4b42c70f54fe4f24d84cdc651f46c005,
-    type: 3}
-  m_BuildTargetIcons:
-  - m_BuildTarget: 
-    m_Icons:
-    - m_Icon: {fileID: 2800000, guid: 4b42c70f54fe4f24d84cdc651f46c005, type: 3}
->>>>>>> origin/master
-      m_Size: 128
+  m_BuildTargetIcons: []
   m_BuildTargetBatching: []
   webPlayerTemplate: APPLICATION:Default
   m_TemplateCustomTags: {}
@@ -270,7 +257,7 @@ PlayerSettings:
     16: CROSS_PLATFORM_INPUT;MOBILE_INPUT
     17: MOBILE_INPUT
     20: MOBILE_INPUT
-  metroPackageName: Base
+  metroPackageName: Base2
   metroPackageLogo: 
   metroPackageLogo140: 
   metroPackageLogo180: 
@@ -281,7 +268,7 @@ PlayerSettings:
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: Base
+  metroApplicationDescription: Base2
   metroStoreTileLogo80: 
   metroStoreTileLogo: 
   metroStoreTileLogo140: 
@@ -398,7 +385,7 @@ PlayerSettings:
   WebGL::audioCompressionFormat: 4
   WebGL::exceptionSupport: 0
   WebGL::memorySize: 256
-  iOS::Architecture: 0
+  iOS::Architecture: 2
   iOS::ScriptingBackend: 0
   boolPropertyNames:
   - WebGL::dataCaching

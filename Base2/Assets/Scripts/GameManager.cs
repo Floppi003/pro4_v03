@@ -5,9 +5,9 @@ public class GameManager : MonoBehaviour {
 	public Canvas pauseMenu;
 	public AudioManager audioManager;
 	// Count
-	int maxLevels = 6; //max id = maxLevels - 1
-	public int currentLevel = 1; //start with 1 = id 0
-	public int unlockedLevel = 1; //start with 1 = id 0
+	private int maxLevels = 1; //amount of levels in game (!=max id = maxLevels - 1)
+	private int currentLevel = 1; //start with 1 = id 0
+	private int unlockedLevel = 1; //start with 1 = id 0
 	
 	// Timer variables
 	//public Rect timerRect;
@@ -16,14 +16,14 @@ public class GameManager : MonoBehaviour {
 	private string currentTime;
 	
 	// GUI SKI
-	public GUISkin skin;
+	//public GUISkin skin;
 	
 	// References
 	//public GameObject tokenParent;
 	
 	private bool completed = false;
 	private bool showPauseMenu = false;
-	public int winScreenWidth, winScreenHeight;
+	private int winScreenWidth, winScreenHeight;
 	
 	void Update()
 	{
@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour {
 			Application.LoadLevel("Level " + currentLevel); //level name
 			//DontDestroyOnLoad() - don't reset value with new scene
 		} else {
-			Application.LoadLevel("main_menu");
+			Application.LoadLevel("Central");
 			Screen.lockCursor = false;
 			print ("You win!");
 		}

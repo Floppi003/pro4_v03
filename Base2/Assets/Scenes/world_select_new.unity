@@ -135,13 +135,6 @@ MonoBehaviour:
   speed: 0
   inAir: 0
   debug: 1
-  greenClip1: {fileID: 0}
-  greenClip2: {fileID: 0}
-  greenClip3: {fileID: 0}
-  redClip1: {fileID: 0}
-  redClip2: {fileID: 0}
-  blueClip1: {fileID: 0}
-  blueClip2: {fileID: 0}
 --- !u!114 &96735171
 MonoBehaviour:
   m_ObjectHideFlags: 0
