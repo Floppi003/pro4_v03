@@ -60,8 +60,11 @@ public class GravityBody : MonoBehaviour {
 			Quaternion targetRotation = Quaternion.FromToRotation (transform.up, gravityUp) * transform.rotation;
 			float angularSpeed = 3.0f;
 			if (transform.rotation != targetRotation) {
+				//transform.rotation = Quaternion.Lerp (transform.rotation, targetRotation, angularSpeed);
+
 				transform.rotation = Quaternion.RotateTowards (transform.rotation, targetRotation, angularSpeed);
-				//print("Player: " + transform.rotation + ", target: " + targetRotation);
+					//print("Player: " + transform.rotation + ", target: " + targetRotation);
+					//transform.Rotate(0, yAmount, 0, Space.Self);
 			}
 		}
 		//linear interpolation
