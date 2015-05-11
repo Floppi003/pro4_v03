@@ -6,19 +6,19 @@ public class LevelLoaderNew : MonoBehaviour {
 	public GameObject padlock;
 	private string loadPrompt;
 	//private bool inRange;
-	private int unlockedLevel;
+	private int unlockedLevel = 1;
 	private bool canLoadLevel = true;
 
 	void Start()
 	{
 		unlockedLevel = PlayerPrefs.GetInt ("Level Unlocked");
 		PlayerPrefs.SetInt("Chosen Level", unlockedLevel);
-		/*
+
 		if (unlockedLevel == 0) 
 		{
 			unlockedLevel = 1;
 		}
-		*/
+
 
 		canLoadLevel = levelToLoad <= unlockedLevel ? true : false;
 		if(!canLoadLevel)
@@ -44,19 +44,7 @@ public class LevelLoaderNew : MonoBehaviour {
 			Debug.Log("My name is " + levelToLoad.ToString ());
 		}
 	}
-	/*
-	void OnTriggerStay(Collider other)
-	{
-		inRange = true;
-		if (levelToLoad.ToString () == "0") {
-			loadPrompt = "Press [F] to start a new game";
-		}else if (canLoadLevel) {
-			loadPrompt = "Press [F] to load level " + levelToLoad.ToString ();
-		} else {
-			loadPrompt = "Level " + levelToLoad.ToString () + " is locked";
-		}
-	}
-*/
+
 	public string GetText(){
 		string levelText = "";
 		if (levelToLoad.ToString () == "0") {
@@ -68,18 +56,6 @@ public class LevelLoaderNew : MonoBehaviour {
 		}
 		return levelText;
 	}
-	/*
-	void OnTriggerExit()
-	{
-		loadPrompt = "";
-		inRange = false;
-	}
-
-	void OnGUI()
-	{
-		GUI.Label (new Rect (30, Screen.height * .9f, 200, 40), loadPrompt);
-	}
-*/
 
 	void playAnimation() {
 		GetComponent<Animator> ().Play("Push");
