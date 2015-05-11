@@ -36,6 +36,8 @@ public class Level1 : MonoBehaviour {
 	private float timeTillWallSoundStarts;
 	private float timeEyesAreClosed; // when eyes are closed this will count up. when eyes are opened it will get reset
 	private float blinkingLightCounter; // counts up, when reached a certain number it will be reset and a light will start to blink
+	private string currentBlinkingLight;
+	private int currentBlinkingLightIndex;
 
 
 	protected void OnEnable() {
@@ -48,7 +50,7 @@ public class Level1 : MonoBehaviour {
 		gazePointDataProvider = eyexHost.GetGazePointDataProvider (GazePointDataMode.LightlyFiltered);
 		eyePositionDataProvider = eyexHost.GetEyePositionDataProvider();
 
-		timeTillFirstDoorOpens = 0.0f; //9.0f;
+		timeTillFirstDoorOpens = 0.0f;  //9.0f;
 		timeTillWallSoundStarts = 0.0f; //3.0f;
 		timeTillWakeupSoundStarts = 0.0f; //2.0f;
 		timeEyesAreClosed = 0.0f;
@@ -166,7 +168,11 @@ public class Level1 : MonoBehaviour {
 				string gazedObject = gazeRaycastHit.collider.gameObject.name;
 
 				if (gazedObject.Contains ("Panel_Colored")) {
-					//Debug.Log ("Panel gazed");
+					Debug.Log ("Panel gazed");
+					if (gazedObject.Equals (currentBlinkingLight)) {
+						//((GameObject) blinkingLights[currentBlinkingLightIndex]).
+						blinkingLights.RemoveAt(currentBlinkingLightIndex);
+					}
 				}
 			}
 		}
@@ -183,9 +189,10 @@ public class Level1 : MonoBehaviour {
 	void blinkLight() {
 		int index = Random.Range (0, blinkingLights.Count);
 		Debug.Log ("index: " + index);
+		currentBlinkingLight = blinkingLights [index].ToString ();
+		currentBlinkingLightIndex = index;
 		((GameObject) blinkingLights [index]).GetComponent<Animator> ().Play ("WallLight_Anim");
 	}
-
 
 	public void setWallTriggerStarted(bool didStart) {
 		wallTriggerStarted = didStart;
