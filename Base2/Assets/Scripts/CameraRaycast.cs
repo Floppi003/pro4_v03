@@ -41,6 +41,7 @@ public class CameraRaycast : MonoBehaviour {
 
 	void OnGUI()
 	{
+		GUI.contentColor = Color.black;
 		GUI.Label (new Rect (30, Screen.height * .9f, 200, 40), loadPrompt);
 	}
 }

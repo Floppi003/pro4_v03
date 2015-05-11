@@ -11,7 +11,7 @@ GameObject:
   - 65: {fileID: 6593936}
   - 114: {fileID: 11421112}
   m_Layer: 0
-  m_Name: Labyrinth
+  m_Name: LabyrinthCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
