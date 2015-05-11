@@ -2,19 +2,28 @@
 
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using Tobii.EyeX.Framework;
 
+//[AddComponentMenu("Tobii EyeX/Eye Position Data")]
+[AddComponentMenu("Tobii EyeX/Gaze Point Data")]
 
 public class Level1 : MonoBehaviour { 
 
-	private IEyeXDataProvider<EyeXEyePosition> _dataProvider;
-	private EyeXHost _eyexHost;
-
+	// eye stuff
+	private IEyeXDataProvider<EyeXEyePosition> eyePositionDataProvider;
+	private IEyeXDataProvider<EyeXGazePoint> gazePointDataProvider;
+	private EyeXHost eyexHost;
 	public EyeXEyePosition LastEyePosition { get; private set; }
+	private RaycastHit gazeRaycastHit;
 
+	// Blinking lights array
+	private ArrayList blinkingLights;
 
+	// audio stuff
 	private AudioFilesLevel1 audioFiles;
 
+	// other stuff
 	private float elapsedTime;
 	private bool openFirstDoorAnimationStarted;
 	private bool wallTriggerStarted;
@@ -26,33 +35,49 @@ public class Level1 : MonoBehaviour {
 	private float timeTillFirstDoorOpens;
 	private float timeTillWallSoundStarts;
 	private float timeEyesAreClosed; // when eyes are closed this will count up. when eyes are opened it will get reset
+	private float blinkingLightCounter; // counts up, when reached a certain number it will be reset and a light will start to blink
 
+
+	protected void OnEnable() {
+		eyePositionDataProvider.Start();
+		gazePointDataProvider.Start ();
+	}
 
 	void Awake() {
-		_eyexHost = EyeXHost.GetInstance();
-		_dataProvider = _eyexHost.GetEyePositionDataProvider();
-
-		// check whether left and right eye are closed
-		EyeXEyePosition lastEyePosition = _dataProvider.Last;
-		
-		Debug.Log ("lastEyePosition: " + lastEyePosition);
-
-		Debug.Log ("leftEye: " + lastEyePosition.LeftEye);
-		
-		if (!lastEyePosition.RightEye.IsValid && !lastEyePosition.LeftEye.IsValid) {
-			timeEyesAreClosed += Time.deltaTime;
-		}
+		eyexHost = EyeXHost.GetInstance();
+		gazePointDataProvider = eyexHost.GetGazePointDataProvider (GazePointDataMode.LightlyFiltered);
+		eyePositionDataProvider = eyexHost.GetEyePositionDataProvider();
 
 		timeTillFirstDoorOpens = 0.0f; //9.0f;
 		timeTillWallSoundStarts = 0.0f; //3.0f;
 		timeTillWakeupSoundStarts = 0.0f; //2.0f;
 		timeEyesAreClosed = 0.0f;
+		blinkingLightCounter = 0.0f;
 		
 		wakeupSoundPlayed = false;
 		openFirstDoorAnimationStarted = false;
 		wallTriggerStarted = false;
 		wallSoundPlayed = false;
-		Debug.Log ("Awake");
+
+
+		// load the blinking lights
+		blinkingLights = new ArrayList ();
+		blinkingLights.Add (GameObject.Find ("Panel_Colored_01"));
+		blinkingLights.Add (GameObject.Find ("Panel_Colored_02"));
+		blinkingLights.Add (GameObject.Find ("Panel_Colored_03"));
+		blinkingLights.Add (GameObject.Find ("Panel_Colored_04"));
+		blinkingLights.Add (GameObject.Find ("Panel_Colored_05"));
+		blinkingLights.Add (GameObject.Find ("Panel_Colored_06"));
+		blinkingLights.Add (GameObject.Find ("Panel_Colored_07"));
+		blinkingLights.Add (GameObject.Find ("Panel_Colored_08"));
+		blinkingLights.Add (GameObject.Find ("Panel_Colored_09"));
+
+		Debug.Log ("Awake: " + this.ToString());
+	}
+
+	protected void OnDisable() {
+		eyePositionDataProvider.Stop();
+		gazePointDataProvider.Stop ();
 	}
 
 	void Start() {
@@ -70,12 +95,13 @@ public class Level1 : MonoBehaviour {
 	void Update() {
 		elapsedTime += Time.deltaTime;
 
+
 		// play the wakeup sound
 		if (timeTillWakeupSoundStarts < elapsedTime && wakeupSoundPlayed == false) {
 			wakeupSoundPlayed = true;
 
-			Debug.Log ("Wakeup sound queued");
-			AudioManager.instance.playAudioClipForced(audioFiles.wakeupAudioClip);
+			//Debug.Log ("Wakeup sound queued");
+			AudioManager.instance.queueAudioClip(audioFiles.wakeupAudioClip);
 		}
 
 
@@ -86,7 +112,7 @@ public class Level1 : MonoBehaviour {
 			if (wallSoundPlayed == false && timeTillWallSoundStarts < 0) {
 				// play Audio Sound
 				wallSoundPlayed = true;
-				AudioManager.instance.playAudioClipForced(audioFiles.firstWallAudioClip);
+				AudioManager.instance.queueAudioClip(audioFiles.firstWallAudioClip);
 			}
 		}
 
@@ -102,9 +128,9 @@ public class Level1 : MonoBehaviour {
 		if (wallSoundPlayed && !wallsVisible) {
 
 			// check whether left and right eye are closed
-			EyeXEyePosition lastEyePosition = _dataProvider.Last;
+			EyeXEyePosition lastEyePosition = eyePositionDataProvider.Last;
 
-			Debug.Log ("lastEyePosition: " + lastEyePosition);
+			//Debug.Log ("lastEyePosition: " + lastEyePosition);
 
 			if (!lastEyePosition.RightEye.IsValid && !lastEyePosition.LeftEye.IsValid) {
 				timeEyesAreClosed += Time.deltaTime;
@@ -114,7 +140,7 @@ public class Level1 : MonoBehaviour {
 
 			if (timeEyesAreClosed > 1.0f) {
 				// show the walls
-				GameObject.Find ("\tLevel_1_Obstacle_Wall_01").GetComponent<MeshRenderer>().enabled = true;
+				GameObject.Find ("Level_1_Obstacle_Wall_01").GetComponent<MeshRenderer>().enabled = true;
 				GameObject.Find ("Level_1_Obstacle_Wall_02").GetComponent<MeshRenderer>().enabled = true;
 				GameObject.Find ("Level_1_Obstacle_Wall_03").GetComponent<MeshRenderer>().enabled = true;
 				GameObject.Find ("Level_1_Obstacle_Wall_04").GetComponent<MeshRenderer>().enabled = true;
@@ -122,20 +148,46 @@ public class Level1 : MonoBehaviour {
 				wallsVisible = true;
 			}
 		}
+
+
+
+		// if the walls are passed send out rays to check whether the player is looking at a "solar panel"
+		if (wallsVisible) {
+
+
+			EyeXGazePoint gazePoint = gazePointDataProvider.Last;
+			//Debug.Log ("last Gaze Point: " + gazePoint);
+			Vector2 screenCoordinates = gazePoint.Screen;
+
+			Ray gazeRay = Camera.main.ScreenPointToRay (new Vector3 (screenCoordinates.x, screenCoordinates.y, 0));
+			Debug.DrawRay(gazeRay.origin, gazeRay.direction, Color.magenta, 120.0f);
+			if (Physics.Raycast (gazeRay.origin, gazeRay.direction, out gazeRaycastHit, 40.0f)) {
+
+				string gazedObject = gazeRaycastHit.collider.gameObject.name;
+
+				if (gazedObject.Contains ("Panel_Colored")) {
+					//Debug.Log ("Panel gazed");
+				}
+			}
+		}
+
+
+		blinkingLightCounter += Time.deltaTime;
+
+		if (blinkingLightCounter > 2.75f) {
+			blinkingLightCounter = 0.0f;
+			blinkLight ();
+		}
+	}
+
+	void blinkLight() {
+		int index = Random.Range (0, blinkingLights.Count);
+		Debug.Log ("index: " + index);
+		((GameObject) blinkingLights [index]).GetComponent<Animator> ().Play ("WallLight_Anim");
 	}
 
 
-	// Triggers
-	void OnTriggerEnter(Collider other) {
-		Debug.Log ("OnTriggerEnter");
-		wallTriggerStarted = true;
-	}
-	
-	void OnTriggerStay(Collider other) {
-		Debug.Log ("OnTriggerStay");
-	}
-	
-	void OnTriggerExit(Collider other) {
-		Debug.Log ("OnTriggerExit");
+	public void setWallTriggerStarted(bool didStart) {
+		wallTriggerStarted = didStart;
 	}
 }

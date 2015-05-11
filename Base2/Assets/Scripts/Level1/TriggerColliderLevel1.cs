@@ -14,5 +14,17 @@ public class TriggerColliderLevel1 : MonoBehaviour {
 	}
 
 
-
+	// Triggers
+	void OnTriggerEnter(Collider other) {
+		Debug.Log ("OnTriggerEnter");
+		GameObject.Find ("GM").GetComponent<Level1> ().setWallTriggerStarted (true);
+	}
+	
+	void OnTriggerStay(Collider other) {
+		Debug.Log ("OnTriggerStay");
+	}
+	
+	void OnTriggerExit(Collider other) {
+		Debug.Log ("OnTriggerExit");
+	}
 }
