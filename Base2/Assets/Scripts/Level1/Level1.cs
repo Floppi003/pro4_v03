@@ -184,6 +184,11 @@ public class Level1 : MonoBehaviour {
 		}
 
 
+		GameObject.Find ("Cow").GetComponentInChildren<MeshRenderer> ().material.color = Color.Lerp (Color.magenta, Color.blue, elapsedTime % 10 / 10.0f);
+
+
+		
+		
 		blinkingLightCounter += Time.deltaTime;
 
 		if (blinkingLightCounter > 2.75f) {
