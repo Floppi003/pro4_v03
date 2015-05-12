@@ -38,7 +38,7 @@ public class Level1 : MonoBehaviour {
 	private float blinkingLightCounter; // counts up, when reached a certain number it will be reset and a light will start to blink
 	private string currentBlinkingLight;
 	private int currentBlinkingLightIndex;
-
+	private bool currentBlinkingLightRemoved; // bool that is set when the current blinkin light was already removed (to avoid double-removing)
 
 	protected void OnEnable() {
 		eyePositionDataProvider.Start();
@@ -73,6 +73,7 @@ public class Level1 : MonoBehaviour {
 		blinkingLights.Add (GameObject.Find ("Panel_Colored_07"));
 		blinkingLights.Add (GameObject.Find ("Panel_Colored_08"));
 		blinkingLights.Add (GameObject.Find ("Panel_Colored_09"));
+		currentBlinkingLightRemoved = false;
 
 		Debug.Log ("Awake: " + this.ToString());
 	}
@@ -169,9 +170,14 @@ public class Level1 : MonoBehaviour {
 
 				if (gazedObject.Contains ("Panel_Colored")) {
 					Debug.Log ("Panel gazed");
-					if (gazedObject.Equals (currentBlinkingLight)) {
-						//((GameObject) blinkingLights[currentBlinkingLightIndex]).
+					Debug.Log ("gazedObject: " + gazedObject);
+					Debug.Log ("currentBlinkingLight: " + currentBlinkingLight);
+
+					if (gazedObject == currentBlinkingLight && currentBlinkingLightRemoved == false) {
+						Debug.Log ("Blinking Panel gazed");
+						((GameObject) blinkingLights[currentBlinkingLightIndex]).GetComponentInChildren<MeshRenderer>().enabled = false;
 						blinkingLights.RemoveAt(currentBlinkingLightIndex);
+						currentBlinkingLightRemoved = true;
 					}
 				}
 			}
@@ -187,13 +193,18 @@ public class Level1 : MonoBehaviour {
 	}
 
 	void blinkLight() {
+		currentBlinkingLightRemoved = false;
 		int index = Random.Range (0, blinkingLights.Count);
-		Debug.Log ("index: " + index);
-		currentBlinkingLight = blinkingLights [index].ToString ();
+		//Debug.Log ("index: " + index);
+		currentBlinkingLight = ((GameObject)blinkingLights [index]).name;
 		currentBlinkingLightIndex = index;
 		((GameObject) blinkingLights [index]).GetComponent<Animator> ().Play ("WallLight_Anim");
 	}
 
+	// when a blinking light is currently blinking and watched by the user it should turn green
+
+
+	// setter method
 	public void setWallTriggerStarted(bool didStart) {
 		wallTriggerStarted = didStart;
 	}
