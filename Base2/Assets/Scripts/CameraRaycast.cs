@@ -6,6 +6,7 @@ public class CameraRaycast : MonoBehaviour {
 	public Camera cam;
 	private RaycastHit interactionRaycastHit;
 	private string loadPrompt;
+	public bool showHint = false;
 
 	// Use this for initialization
 	void Start () {
@@ -19,11 +20,13 @@ public class CameraRaycast : MonoBehaviour {
 		
 			if (interactionRaycastHit.collider.gameObject.tag == "Interaction") {
 				loadPrompt = "Press [F] for Interaction";
+				showHint = true;
 				interactionRaycastHit.collider.gameObject.GetComponent<InteractionButton>().playAnimation();
 				//Debug.LogError("InteractionRaycastHit.");
-		
+
 			} else if (interactionRaycastHit.collider.gameObject.tag == "LevelButton"){
 				loadPrompt = interactionRaycastHit.collider.gameObject.GetComponent<LevelLoaderNew>().GetText ();
+				showHint = true;
 				interactionRaycastHit.collider.gameObject.GetComponent<LevelLoaderNew>().LevelButtonPressed();
 		
 			} else if (interactionRaycastHit.collider.gameObject.tag == "Exploder"){
@@ -32,16 +35,20 @@ public class CameraRaycast : MonoBehaviour {
 		
 			}else {
 				loadPrompt = "";
+				showHint = false;
 			}
 	
 		} else {
 			loadPrompt = "";
+			showHint = false;
 		}
 	}
 
-	void OnGUI()
-	{
-		GUI.contentColor = Color.black;
-		GUI.Label (new Rect (30, Screen.height * .9f, 200, 40), loadPrompt);
+	void OnGUI() {
+
+		if (showHint) {			
+			Rect interactionRect = new Rect(2*Screen.width/3, 2*Screen.height/3, Screen.width/2/2, Screen.height/6/2);
+			GUI.Box(interactionRect, loadPrompt);
+		}
 	}
 }

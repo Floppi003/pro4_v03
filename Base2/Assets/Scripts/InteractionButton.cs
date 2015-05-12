@@ -20,7 +20,7 @@ public class InteractionButton : MonoBehaviour {
 			GetComponent<Animator> ().Play ("Push");
 		//	Debug.Log("Button pressed.");
 
-		// öffne die Tür
+		// öffne die Tür etc
 			exploder.GetComponent<Explosion>().Explode();
 		}
 	}
